@@ -31,7 +31,7 @@ function Releases() {
   const [retdata, setretdata] = useState([]);
   async function fetchdata() {
     await axios
-      .get("http://localhost:9000/api/product/")
+      .get("http://localhost:5000/api/product/")
       .then(function (response) {
         console.log(response);
         setretdata(response.data);
