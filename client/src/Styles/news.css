@@ -1,0 +1,25 @@
+.news-outer {
+  min-height: 100px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 1000;
+  font-size: 1.6vw;
+  text-align: center;
+  display: flex;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.news_outer p {
+  font-weight: 100;
+  text-align: center;
+}
+.Cursor {
+  display: none !important;
+}
+.Typist {
+  text-align: center;
+}

@@ -1,0 +1,23 @@
+.footer_elements_outer {
+  margin-top: 10px;
+  text-align: left;
+  font-size: 1.6vw;
+  text-decoration: none;
+  font-family: serif;
+  background-color: #5097e9;
+  /* min-height: 150px; */
+  /* padding: 10px; */
+  display: flex;
+
+  flex-direction: row;
+  justify-content: space-between;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+.footer_elements_outer h3 {
+  color: white;
+  margin: 12px;
+  display: inline-block;
+}
