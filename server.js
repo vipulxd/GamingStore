@@ -12,13 +12,12 @@ app.use(express.json());
 app.use("/api/product", require("./route/products"));
 app.use("/api/user", require("./route/Users"));
 
-const PORT = process.env.PORT || 9000;
-
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
+const PORT = process.env.PORT || 9000;
 
 app.listen(PORT, () => console.log(`Server is up and running on PORT ${PORT}`));
