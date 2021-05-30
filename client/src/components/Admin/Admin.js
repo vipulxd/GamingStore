@@ -41,7 +41,7 @@ function Admin() {
     };
     axios
       .post(
-        "http://localhost:9000/api/product/add_prod/vipul.xtr@gmail.com",
+        "https://gamerstopbymarcrove.herokuapp.com/api/product/add_prod/vipul.xtr@gmail.com",
         formData
       )
       .then(response => {
