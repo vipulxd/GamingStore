@@ -3,6 +3,17 @@ const router = express.Router();
 const {check, validationResult} = require("express-validator");
 const User_Schema = require("../model/user.js");
 const Prod_Schema = require("../model/product.js");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, new Date() + ".jpg");
+  },
+});
+const upload = multer({storage: storage, fileSize: 1024 * 1024 * 5});
 
 // Route to create product
 router.post(
@@ -10,9 +21,12 @@ router.post(
   [
     check("name", "required").notEmpty(),
     check("rating", "required").notEmpty(),
-    check("quantity", "required").notEmpty(),
+    check("price", "required").notEmpty(),
+    check("productImage", "required").notEmpty(),
   ],
-  async (req, res) => {
+  upload.single("productImage"),
+  async (req, res, next) => {
+    console.log(req.file);
     const error = validationResult(req);
     if (!error) {
       res.json({message: "Error"});
@@ -22,8 +36,11 @@ router.post(
         const pack = new Prod_Schema({
           name: req.body.name,
           rating: req.body.rating,
-          quantity: req.body.rating,
+          price: req.body.price,
+          image: req.file.path,
+          createdAt: new Date(),
         });
+
         await pack.save();
         res.json({message: "Product created"});
       } catch (err) {

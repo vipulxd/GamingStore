@@ -12,7 +12,9 @@ function Header() {
   return (
     <div className="header_outer">
       <div className="title_heading">
-        <heading>Gamer's Stop</heading>
+        <h3>
+          <a href="/">Gamer's Stop</a>
+        </h3>
       </div>
       <div className="search_box">
         <Search />

@@ -9,8 +9,13 @@ const Prods_Schema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  quantity: {
-    type: Number,
+  price: {
+    type: String,
+  },
+  image: {type: String, required: true},
+  createdAt: {
+    type: String,
+    required: true,
   },
 });
 

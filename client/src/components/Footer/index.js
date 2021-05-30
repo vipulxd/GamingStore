@@ -9,6 +9,9 @@ function index() {
       <h3>
         <a href="mailto:eyrzr@protonmail.com">eyrzr@protonmail.com</a>{" "}
       </h3>
+      <h3>
+        <a href="/about">About</a>
+      </h3>
     </div>
   );
 }

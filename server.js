@@ -4,8 +4,10 @@ const app = express();
 const cors = require("cors");
 const path = require("path");
 const connect_database = require("./config/database");
-connect_database();
+const multer = require("multer");
 
+connect_database();
+app.use(express.static("uploads"));
 app.use(express.json({extended: false}));
 app.use(cors());
 app.use(express.json());

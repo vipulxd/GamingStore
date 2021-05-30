@@ -13,16 +13,17 @@ import Typography from "@material-ui/core/Typography";
 import Image from "../../_downloadfiles_wallpapers_1280_720_tom_clancys_ghost_recon_wildlands_hd_4k_8k_17497.jpg";
 const useStyles = makeStyles({
   root: {
-    width: 280,
+    width: 290,
     // backgroundColor: "black",
     color: "black",
   },
   media: {
-    height: 200,
+    height: 250,
   },
   fonta: {
     color: "#5097e9",
     fontWeight: "Bold",
+    fontSize: "1.6vw",
   },
 });
 
@@ -31,34 +32,34 @@ function Releases() {
   const [retdata, setretdata] = useState([]);
   async function fetchdata() {
     await axios
-      .get("http://localhost:5000/api/product/")
+      .get(
+        "http://localhost:9000/api/product/" ||
+          "https://gamerstopbymarcrove.herokuapp.com/api/product/"
+      )
       .then(function (response) {
-        console.log(response);
         setretdata(response.data);
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch(function (error) {});
   }
 
   useEffect(() => {
     fetchdata();
   }, []);
-  console.log(retdata);
+
   return (
     <div className="outer-box">
       <p className="heading_log">Recent releases</p>
-      <div className="card_outer">
+      <div className="card_outer_releases">
         {" "}
         {retdata.length > 0 ? (
-          retdata.map(a => {
+          retdata.slice(Math.max(retdata.length - 3, 0)).map(a => {
             return (
-              <div className="cards">
+              <div className="cards_releases">
                 <Card className={classes.root}>
                   <CardActionArea>
                     <CardMedia
                       className={classes.media}
-                      image={Image}
+                      image={"http://localhost:9000/" + a.createdAt + ".jpg"}
                       title="Contemplative Reptile"
                     />
                     <CardContent>
@@ -73,7 +74,7 @@ function Releases() {
                   </CardActionArea>
                   <CardActions>
                     <Button size="small" color="primary" variant="outlined">
-                      Add to Cart
+                      {"$" + a.price}
                     </Button>
 
                     <Button

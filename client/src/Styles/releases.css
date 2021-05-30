@@ -9,19 +9,20 @@
 .heading_log {
   margin: 10px;
 }
-.cards {
-  /* padding: 20px; */
-  transition: transform 0.3s ease;
-  margin: 18px;
+.cards_releases {
+  margin: 20px;
+  transition: transform 0.4s ease;
 }
-.cards:hover {
-  /* transition: transform 0.5s ease; */
+
+.cards_releases:hover {
+  transition: transform 0.4s ease-in-out;
   transform: scale(1.2);
 }
-.card_outer {
+.card_outer_releases {
+  justify-content: space-between;
   display: flex;
 
   overflow-y: hidden;
   overflow-x: scroll;
-  padding: 20px;
+  padding: 30px;
 }

@@ -20,6 +20,11 @@ const useStyles = makeStyles({
   media: {
     height: 200,
   },
+  fonta: {
+    color: "#5097e9",
+    fontWeight: "Bold",
+    fontSize: "1.6vw",
+  },
 });
 
 function Explore() {
@@ -29,43 +34,46 @@ function Explore() {
     await axios
       .get("http://localhost:9000/api/product/")
       .then(function (response) {
-        console.log(response);
         setretdataa(response.data);
+        console.log(response);
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch(function (error) {});
   }
 
   useEffect(() => {
     fetchdata();
   }, []);
-  console.log(retdataa);
+
   return (
     <div className="outer-box">
       <p className="heading_log">Explore more in Store</p>
-      <div className="card_outer">
+      <div className="card_outer_explorer">
         {" "}
         {retdataa.length > 0 ? (
           retdataa.map(b => {
             return (
-              <div className="cards">
+              <div className="cards_explorer">
                 <Card className={classes.root}>
                   <CardActionArea>
                     <CardMedia
                       className={classes.media}
-                      image={Image}
+                      image={"http://localhost:9000/" + b.createdAt + ".jpg"}
                       title="Contemplative Reptile"
                     />
                     <CardContent>
-                      <Typography variant="h6" component="h6" color="primary">
+                      <Typography
+                        className={classes.fonta}
+                        variant="h6"
+                        component="h6"
+                        color="primary"
+                      >
                         {b.name}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
                     <Button size="small" color="primary" variant="outlined">
-                      Add to Cart
+                      {"$" + b.price}
                     </Button>
 
                     <Button
