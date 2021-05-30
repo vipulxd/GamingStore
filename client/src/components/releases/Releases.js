@@ -10,7 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Image from "../../_downloadfiles_wallpapers_1280_720_tom_clancys_ghost_recon_wildlands_hd_4k_8k_17497.jpg";
+
 const useStyles = makeStyles({
   root: {
     width: 290,
@@ -32,10 +32,7 @@ function Releases() {
   const [retdata, setretdata] = useState([]);
   async function fetchdata() {
     await axios
-      .get(
-        "http://localhost:9000/api/product/" ||
-          "https://gamerstopbymarcrove.herokuapp.com/api/product/"
-      )
+      .get("https://gamerstopbymarcrove.herokuapp.com/api/product/")
       .then(function (response) {
         setretdata(response.data);
       })
@@ -59,7 +56,11 @@ function Releases() {
                   <CardActionArea>
                     <CardMedia
                       className={classes.media}
-                      image={"http://localhost:9000/" + a.createdAt + ".jpg"}
+                      image={
+                        "https://gamerstopbymarcrove.herokuapp.com/" +
+                        a.createdAt +
+                        ".jpg"
+                      }
                       title="Contemplative Reptile"
                     />
                     <CardContent>

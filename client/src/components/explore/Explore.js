@@ -32,7 +32,7 @@ function Explore() {
   const [retdataa, setretdataa] = useState([]);
   async function fetchdata() {
     await axios
-      .get("http://localhost:9000/api/product/")
+      .get("https://gamerstopbymarcrove.herokuapp.com/api/product/")
       .then(function (response) {
         setretdataa(response.data);
         console.log(response);
@@ -57,7 +57,11 @@ function Explore() {
                   <CardActionArea>
                     <CardMedia
                       className={classes.media}
-                      image={"http://localhost:9000/" + b.createdAt + ".jpg"}
+                      image={
+                        "https://gamerstopbymarcrove.herokuapp.com/" +
+                        b.createdAt +
+                        ".jpg"
+                      }
                       title="Contemplative Reptile"
                     />
                     <CardContent>
