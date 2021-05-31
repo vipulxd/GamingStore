@@ -1,22 +1,20 @@
 * {
   margin: 0px;
   /* border: 1px solid black; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+}
+body {
+  /* background-color: blanchedalmond; */
 }
 
-.home_outer {
-  /* background-image: url("../muhannad-ajjan-sL2BRR1cuvM-unsplash.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover; */
-  /* background-color: rgba(11, 24, 12, 0.562); */
-  margin-top: 10px;
-}
 html {
   box-sizing: border-box;
 }
 .main_body {
   /* background-color: rgba(0, 0, 0, 0.253); */
   min-height: 1000px;
+  margin-top: 10px;
 }
 
 .footer_outer {

@@ -1,28 +1,25 @@
 .outer-box {
-  min-height: 300px;
-  margin-bottom: 30px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  /* margin-top: 60px; */
+  width: 100%;
+
   font-weight: 1000;
   font-size: 1.6vw;
 }
-.heading_log {
-  margin: 10px;
-}
+
 .cards_releases {
   margin: 20px;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s ease-out;
 }
 
 .cards_releases:hover {
-  transition: transform 0.4s ease-in-out;
-  transform: scale(1.2);
+  transition: transform 0.4s ease;
+  transform: scale(1.1);
 }
 .card_outer_releases {
-  justify-content: space-between;
+  justify-content: space-evenly;
   display: flex;
+  padding: 20px;
 
   overflow-y: hidden;
   overflow-x: scroll;
-  padding: 30px;
 }

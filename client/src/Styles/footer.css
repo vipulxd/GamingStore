@@ -8,16 +8,16 @@
   /* min-height: 150px; */
   /* padding: 10px; */
   display: flex;
-
+  bottom: 0;
   flex-direction: row;
   justify-content: space-between;
 }
 a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 .footer_elements_outer h3 {
-  color: white;
+  color: black;
   margin: 12px;
   display: inline-block;
 }

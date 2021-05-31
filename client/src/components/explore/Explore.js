@@ -10,20 +10,22 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Image from "../../_downloadfiles_wallpapers_1280_720_tom_clancys_ghost_recon_wildlands_hd_4k_8k_17497.jpg";
+
 const useStyles = makeStyles({
   root: {
     width: 280,
     // backgroundColor: "black",
     color: "black",
+    height: 400,
   },
   media: {
-    height: 200,
+    height: 250,
   },
   fonta: {
     color: "#5097e9",
     fontWeight: "Bold",
     fontSize: "1.6vw",
+    height: 50,
   },
 });
 
@@ -62,7 +64,7 @@ function Explore() {
                         b.createdAt +
                         ".jpg"
                       }
-                      title="Contemplative Reptile"
+                      title={b.name}
                     />
                     <CardContent>
                       <Typography

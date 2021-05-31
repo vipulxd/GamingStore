@@ -6,7 +6,7 @@
 
 .header_outer {
   display: flex;
-  margin: 50px;
+  margin: 30px;
   justify-content: space-between;
   /* align-items: center; */
   /* justify-content: center; */
@@ -14,7 +14,7 @@
 .header_input {
   height: 30px;
   width: 30rem;
-  border-radius: 10px;
+  border-radius: 3px;
   border-color: rgb(80, 151, 233);
 }
 .header_logger {
@@ -38,14 +38,10 @@ input {
   font-size: 1.3vw;
   text-align: center;
 }
-button {
-  color: white !important;
-  background-color: black;
-}
+
 .title_heading {
   font-style: italic;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+
   font-size: 2.6vw;
 
   font-weight: bolder;
@@ -63,6 +59,4 @@ button {
   font-size: 1.4vw;
   text-align: center;
   padding-top: 10px;
-}
-.admin_butt {
 }

@@ -6,13 +6,21 @@ function index() {
   return (
     <div className="news-outer">
       <div className="news_outer">
-        <Typist>
+        <Typist avgTypingDelay={90}>
           <br />
+
           <p>
             Ghost recon servers are being compromised by hackers third time
             after 9/11 ~ BBC
           </p>
+
           <br />
+
+          <Typist.Backspace count={100} delay={200} />
+          <p>
+            Hackers asked for 4M for the blueprint stolen last month from
+            ubisoft servers
+          </p>
         </Typist>
       </div>
     </div>

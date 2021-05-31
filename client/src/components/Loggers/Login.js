@@ -34,15 +34,6 @@ function Login() {
   return (
     <div>
       <div className="_headers_log_btn">
-        {/* <GoogleLogin
-        clientId={clientId}
-        // buttonText="Login"
-        onSuccess={onSuccess}
-        onFailure={onFailure}
-        cookiePolicy={"single_host_origin"}
-        style={{marginTop: "100px"}}
-        isSignedIn={true}
-      /> */}
         <Button
           variant="contained"
           color="primary"

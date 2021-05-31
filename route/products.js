@@ -26,7 +26,6 @@ router.post(
   ],
   upload.single("productImage"),
   async (req, res, next) => {
-    console.log(req.file);
     const error = validationResult(req);
     if (!error) {
       res.json({message: "Error"});

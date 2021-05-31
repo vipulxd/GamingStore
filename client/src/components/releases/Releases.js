@@ -13,17 +13,18 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    width: 290,
+    width: 350,
     // backgroundColor: "black",
     color: "black",
   },
   media: {
-    height: 250,
+    height: 380,
   },
   fonta: {
     color: "#5097e9",
     fontWeight: "Bold",
     fontSize: "1.6vw",
+    height: 50,
   },
 });
 
@@ -32,7 +33,10 @@ function Releases() {
   const [retdata, setretdata] = useState([]);
   async function fetchdata() {
     await axios
-      .get("https://gamerstopbymarcrove.herokuapp.com/api/product/")
+      .get(
+        "https://gamerstopbymarcrove.herokuapp.com/api/product/" ||
+          "https://gamerstopbymarcrove.herokuapp.com/api/product/"
+      )
       .then(function (response) {
         setretdata(response.data);
       })
@@ -56,12 +60,8 @@ function Releases() {
                   <CardActionArea>
                     <CardMedia
                       className={classes.media}
-                      image={
-                        "https://gamerstopbymarcrove.herokuapp.com/" +
-                        a.createdAt +
-                        ".jpg"
-                      }
-                      title="Contemplative Reptile"
+                      image={"http://localhost:9000/" + a.createdAt + ".jpg"}
+                      title={a.name}
                     />
                     <CardContent>
                       <Typography
@@ -74,14 +74,19 @@ function Releases() {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Button size="small" color="primary" variant="outlined">
+                    <Button
+                      size="small"
+                      color="primary"
+                      variant="outlined"
+                      className={classes.button}
+                    >
                       {"$" + a.price}
                     </Button>
 
                     <Button
                       className={classes.butt}
-                      size="small"
-                      color="primary"
+                      size="medium"
+                      color="secondary"
                       variant="outlined"
                     >
                       Buy
