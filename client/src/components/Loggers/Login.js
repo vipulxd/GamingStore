@@ -13,7 +13,7 @@ function Login() {
   const onSuccess = res => {
     localStorage.setItem("_user_name", res.profileObj.name);
     localStorage.setItem("_email", res.profileObj.email);
-    refreshTokenSetup(res);
+    // refreshTokenSetup(res);
 
     window.location.reload();
     setTimeout(() => {

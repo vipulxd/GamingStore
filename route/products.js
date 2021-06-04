@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
     cb(null, "./uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null, new Date() + ".jpg");
+    cb(null, new Date().toISOString().replace(/.\d+Z$/g, "Z") + ".jpg");
   },
 });
 const upload = multer({storage: storage, fileSize: 1024 * 1024 * 5});
@@ -37,7 +37,7 @@ router.post(
           rating: req.body.rating,
           price: req.body.price,
           image: req.file.path,
-          createdAt: new Date(),
+          createdAt: new Date().toISOString().replace(/.\d+Z$/g, "Z"),
         });
 
         await pack.save();

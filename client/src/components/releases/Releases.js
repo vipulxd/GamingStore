@@ -62,6 +62,7 @@ function Releases() {
       .get("https://gamerstopbymarcrove.herokuapp.com/api/product/")
       .then(function (response) {
         setretdata(response.data);
+        console.log(response.data);
       })
       .catch(function (error) {});
   }

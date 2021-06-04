@@ -1,3 +1,12 @@
+.cart-body {
+  height: 600px;
+}
 .cart-image {
-  height: 200px;
+  width: 60%;
+}
+.cart-image img {
+  margin: 10px;
+  max-height: 400px !important;
+  /* max-width: 100% !important; */
+  background-color: powderblue;
 }
