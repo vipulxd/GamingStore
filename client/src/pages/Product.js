@@ -2,44 +2,48 @@ import {useState, useEffect, React} from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import "../Styles/product-cart.css";
-
+import Home from "./Home";
 function Product() {
   const {prod_id} = useParams();
-  const [data, setdata] = useState({});
+  const [dataret, setdata] = useState();
+  const [isfetched, setfetched] = useState(false);
   async function getdata() {
     await axios
       .get("https://gamerstopbymarcrove.herokuapp.com/api/product/" + prod_id)
       .then(function (response) {
-        setdata(response.data);
-        console.log(data);
+        setfetched(true);
+        // setdata(response);
+        console.log(response);
+        console.log(isfetched);
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-  console.log(`https://localhost:9000/${data.createdAt}` + ".jg");
 
   useEffect(() => {
     getdata();
   }, []);
   return (
     <div className="outer-crrt">
-      {data.length > 0 ? (
+      {isfetched ? (
         <div className="cart-body">
-          <div className="cart-image">
+          {/* <div className="cart-image">
             <img
               src={
                 "https://gamerstopbymarcrove.herokuapp.com/" +
-                data.createdAt +
+                dataret.createdAt +
                 ".jpg"
               }
-              alt={data.name}
-            />
-          </div>
+              alt={dataret.name}
+            /> */}
+          {/* </div> */}
           <div className="info-cart"></div>
         </div>
       ) : (
-        <p>{data.createdAt}</p>
+        <div>
+          <p>{dataret}</p>
+        </div>
       )}
     </div>
   );

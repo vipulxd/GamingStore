@@ -64,7 +64,7 @@ router.get("/", async (req, res) => {
 // Route to  get a single Product
 router.get("/:prod_id", async (req, res) => {
   try {
-    const prod = await Prod_Schema.findOne({_id: req.params.user_id});
+    const prod = await Prod_Schema.findOne({_id: req.params.prod_id});
     res.send(prod);
   } catch (err) {
     res.send(err);
