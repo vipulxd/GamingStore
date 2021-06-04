@@ -5,37 +5,42 @@ import "../Styles/product-cart.css";
 
 function Product() {
   const {prod_id} = useParams();
-  console.log(prod_id);
-  const [data, setdata] = useState();
+  const [data, setdata] = useState({});
   async function getdata() {
     await axios
       .get("https://gamerstopbymarcrove.herokuapp.com/api/product/" + prod_id)
       .then(function (response) {
         setdata(response.data);
+        console.log(data);
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-  console.log(data);
+  console.log(`https://localhost:9000/${data.createdAt}` + ".jg");
+
   useEffect(() => {
     getdata();
   }, []);
   return (
     <div className="outer-crrt">
-      <div className="cart-body">
-        <div className="cart-image">
-          <img
-            src={
-              " https://gamerstopbymarcrove.herokuapp.com/" +
-              data.image +
-              ".jpg"
-            }
-            alt={data.name}
-          />
+      {data.length > 0 ? (
+        <div className="cart-body">
+          <div className="cart-image">
+            <img
+              src={
+                "https://gamerstopbymarcrove.herokuapp.com/" +
+                data.createdAt +
+                ".jpg"
+              }
+              alt={data.name}
+            />
+          </div>
+          <div className="info-cart"></div>
         </div>
-        <div className="info-cart"></div>
-      </div>
+      ) : (
+        <p>{data.createdAt}</p>
+      )}
     </div>
   );
 }

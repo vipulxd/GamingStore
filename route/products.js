@@ -62,7 +62,7 @@ router.get("/", async (req, res) => {
 });
 
 // Route to  get a single Product
-router.get("/:user_id", async (req, res) => {
+router.get("/:prod_id", async (req, res) => {
   try {
     const prod = await Prod_Schema.findOne({_id: req.params.user_id});
     res.send(prod);
