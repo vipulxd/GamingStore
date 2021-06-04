@@ -61,13 +61,13 @@ router.get("/", async (req, res) => {
   });
 });
 
-// Route to  get Products in Cart
+// Route to  get a single Product
 router.get("/:user_id", async (req, res) => {
   try {
-    const prod = await User_Schema.findOne({_user_id: req.params.user_id});
-    res.send(prod.products);
+    const prod = await Prod_Schema.findOne({_id: req.params.user_id});
+    res.send(prod);
   } catch (err) {
-    res.json({message: "Login to save items to cart"});
+    res.send(err);
   }
 });
 

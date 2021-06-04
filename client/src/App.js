@@ -8,6 +8,7 @@ import Cart from "./pages/Cart";
 import {useSelector} from "react-redux";
 import PrivateRoute from "./components/PrivateRoute";
 import About from "./components/About";
+import Product from "./pages/Product";
 function App() {
   const isAdmin = useSelector(state => state.UserInfo.acctype);
 
@@ -26,6 +27,7 @@ function App() {
         />
         <Route path="/about" component={About} />
         <Route path="/cart" exact component={Cart} />
+        <Route path="/product/:prod_id" exact component={Product} />
         <Route
           path="/api/*"
           component={Error}

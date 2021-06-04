@@ -37,7 +37,7 @@ function Explore() {
       .get("https://gamerstopbymarcrove.herokuapp.com/api/product/")
       .then(function (response) {
         setretdataa(response.data);
-        console.log(response);
+        // console.log(response);
       })
       .catch(function (error) {});
   }

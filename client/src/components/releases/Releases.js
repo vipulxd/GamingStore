@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from "react";
 import "../../Styles/releases.css";
-// import SmallCard from "../Cards/SmallCard";
+import {Redirect, useHistory} from "react-router-dom";
 import axios from "axios";
 import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -10,6 +10,14 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import {useDispatch, useSelector} from "react-redux";
+import {addprod} from "../../redux/";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles({
   root: {
@@ -28,20 +36,54 @@ const useStyles = makeStyles({
   },
 });
 
+const useStylesa = makeStyles(theme => ({
+  root: {
+    width: "100%",
+    "& > * + *": {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
 function Releases() {
+  const history = useHistory();
+  const noofGames = useSelector(state => state.CartInfo.products);
+
+  const classesa = useStylesa();
+  const [open, setOpen] = useState(false);
+  const [logged, setlogged] = useState(false);
+  const [prod, setprod] = useState([]);
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [retdata, setretdata] = useState([]);
+  const user = localStorage.getItem("_email");
   async function fetchdata() {
     await axios
-      .get(
-        "https://gamerstopbymarcrove.herokuapp.com/api/product/" ||
-          "https://gamerstopbymarcrove.herokuapp.com/api/product/"
-      )
+      .get("https://gamerstopbymarcrove.herokuapp.com/api/product/")
       .then(function (response) {
         setretdata(response.data);
       })
       .catch(function (error) {});
   }
+
+  function onhandleClick(idofprod) {
+    // setprod(idofprod);
+    handleClick();
+    onhandleRedirect(idofprod);
+    // dispatch(addprod(idofprod));
+  }
+  const onhandleRedirect = idofprod => history.push("/product/" + idofprod);
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   useEffect(() => {
     fetchdata();
@@ -49,6 +91,21 @@ function Releases() {
 
   return (
     <div className="outer-box">
+      <div className={classesa.root}>
+        {user ? (
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="success">
+              Added to Cart
+            </Alert>
+          </Snackbar>
+        ) : (
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="error">
+              Please Login First
+            </Alert>
+          </Snackbar>
+        )}
+      </div>
       <p className="heading_log">Recent releases</p>
       <div className="card_outer_releases">
         {" "}
@@ -92,6 +149,7 @@ function Releases() {
                       size="medium"
                       color="secondary"
                       variant="outlined"
+                      onClick={() => history.push("/product/" + a._id)}
                     >
                       Buy
                     </Button>

@@ -6,7 +6,7 @@
 
 .header_outer {
   display: flex;
-  margin: 30px;
+  margin: 25px;
   justify-content: space-between;
   /* align-items: center; */
   /* justify-content: center; */
@@ -59,4 +59,12 @@ input {
   font-size: 1.4vw;
   text-align: center;
   padding-top: 10px;
+}
+.cart-of-header {
+  width: 100px;
+}
+.cartnos {
+  margin-left: 10px;
+  font-size: 1vw;
+  font-weight: bolder;
 }
