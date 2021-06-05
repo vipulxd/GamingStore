@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from "react";
 import "../../Styles/explore.css";
-// import SmallCard from "../Cards/SmallCard";
+import {useHistory} from "react-router-dom";
 import axios from "axios";
 import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -10,11 +10,31 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Skeleton from "react-loading-skeleton";
+const CARD_OPTIONS = {
+  iconStyle: "solid",
+  style: {
+    base: {
+      iconColor: "#c4f0ff",
+      color: "black",
+      fontWeight: 500,
+      fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
+      fontSize: "16px",
+      fontSmoothing: "antialiased",
+      ":-webkit-autofill": {color: "#fce883"},
+      "::placeholder": {color: "#87bbfd"},
+    },
+    invalid: {
+      iconColor: "#ffc7ee",
+      color: "#ffc7ee",
+    },
+  },
+};
 
 const useStyles = makeStyles({
   root: {
     width: 280,
-    // backgroundColor: "black",
+
     color: "black",
     height: 400,
   },
@@ -30,6 +50,7 @@ const useStyles = makeStyles({
 });
 
 function Explore() {
+  const history = useHistory();
   const classes = useStyles();
   const [retdataa, setretdataa] = useState([]);
   async function fetchdata() {
@@ -37,11 +58,13 @@ function Explore() {
       .get("https://gamerstopbymarcrove.herokuapp.com/api/product/")
       .then(function (response) {
         setretdataa(response.data);
-        // console.log(response);
       })
       .catch(function (error) {});
   }
-
+  function stringsplit(str) {
+    console.log(str.split("/")[1]);
+    return str.split("/")[1];
+  }
   useEffect(() => {
     fetchdata();
   }, []);
@@ -61,8 +84,7 @@ function Explore() {
                       className={classes.media}
                       image={
                         "https://gamerstopbymarcrove.herokuapp.com/" +
-                        b.createdAt +
-                        ".jpg"
+                        stringsplit(b.image)
                       }
                       title={b.name}
                     />
@@ -79,7 +101,7 @@ function Explore() {
                   </CardActionArea>
                   <CardActions>
                     <Button size="small" color="primary" variant="outlined">
-                      {"$" + b.price}
+                      {"₹" + b.price}
                     </Button>
 
                     <Button
@@ -87,6 +109,7 @@ function Explore() {
                       size="small"
                       color="primary"
                       variant="outlined"
+                      onClick={() => history.push("/product/" + b._id)}
                     >
                       Buy
                     </Button>
@@ -96,7 +119,9 @@ function Explore() {
             );
           })
         ) : (
-          <em>Loading</em>
+          <div className="cart-child">
+            <Skeleton count={4} height={50} />
+          </div>
         )}
       </div>
     </div>

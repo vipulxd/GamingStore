@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from "react";
 import "../../Styles/releases.css";
-import {Redirect, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import axios from "axios";
 import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -14,7 +14,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addprod} from "../../redux/";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-
+import Skeleton from "react-loading-skeleton";
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -22,7 +22,7 @@ function Alert(props) {
 const useStyles = makeStyles({
   root: {
     width: 350,
-    // backgroundColor: "black",
+
     color: "black",
   },
   media: {
@@ -44,6 +44,25 @@ const useStylesa = makeStyles(theme => ({
     },
   },
 }));
+const CARD_OPTIONS = {
+  iconStyle: "solid",
+  style: {
+    base: {
+      iconColor: "#c4f0ff",
+      color: "black",
+      fontWeight: 500,
+      fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
+      fontSize: "16px",
+      fontSmoothing: "antialiased",
+      ":-webkit-autofill": {color: "#fce883"},
+      "::placeholder": {color: "#87bbfd"},
+    },
+    invalid: {
+      iconColor: "#ffc7ee",
+      color: "#ffc7ee",
+    },
+  },
+};
 
 function Releases() {
   const history = useHistory();
@@ -77,7 +96,10 @@ function Releases() {
   const handleClick = () => {
     setOpen(true);
   };
-
+  function stringsplit(str) {
+    console.log(str.split("/")[1]);
+    return str.split("/")[1];
+  }
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -120,8 +142,7 @@ function Releases() {
                       className={classes.media}
                       image={
                         "https://gamerstopbymarcrove.herokuapp.com/" +
-                        a.createdAt +
-                        ".jpg"
+                        stringsplit(a.image)
                       }
                       title={a.name}
                     />
@@ -142,7 +163,7 @@ function Releases() {
                       variant="outlined"
                       className={classes.button}
                     >
-                      {"$" + a.price}
+                      {"₹" + a.price}
                     </Button>
 
                     <Button
@@ -160,7 +181,9 @@ function Releases() {
             );
           })
         ) : (
-          <em>Loading</em>
+          <div className="cart-child">
+            <Skeleton count={4} height={50} />
+          </div>
         )}
       </div>
     </div>

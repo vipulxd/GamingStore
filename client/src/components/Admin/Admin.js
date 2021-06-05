@@ -6,14 +6,6 @@ import Input from "@material-ui/core/Input";
 import "../../Styles/admin.css";
 import {makeStyles} from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-}));
-
 function Admin() {
   const classes = makeStyles();
   const [game, setgame] = useState({
@@ -33,11 +25,6 @@ function Admin() {
     formData.append("price", game.price);
     formData.append("productImage", game.productImage);
 
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
     axios
       .post(
         "https://gamerstopbymarcrove.herokuapp.com/api/product/add_prod/vipul.xtr@gmail.com",
