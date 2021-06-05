@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const path = require("path");
-const bodyparser = require("body-parser");
+
 const connect_database = require("./config/database");
 const multer = require("multer");
 
@@ -12,7 +12,7 @@ app.use(express.static("uploads"));
 app.use(express.json({extended: false}));
 app.use(cors());
 app.use(express.json());
-app.use(bodyparser.urlencoded({extended: true}));
+
 app.use("/api/product", require("./route/products"));
 app.use("/api/user", require("./route/Users"));
 app.use("/api/pay", require("./route/Checkout"));
