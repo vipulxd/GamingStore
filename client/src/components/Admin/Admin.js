@@ -27,7 +27,7 @@ function Admin() {
 
     axios
       .post(
-        "https://gamerstopbymarcrove.herokuapp.com//api/product/add_prod/vipul.xtr@gmail.com",
+        "https://gamerstopbymarcrove.herokuapp.com/api/product/add_prod/vipul.xtr@gmail.com",
         formData
       )
       .then(response => {

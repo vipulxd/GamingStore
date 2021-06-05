@@ -43,6 +43,7 @@ function Product() {
   const [price, setprice] = useState();
   const [rating, setrating] = useState();
   const [open, setOpen] = useState(false);
+  const [image, setimage] = useState();
   const [message, setmessage] = useState();
   const [isfetched, setfetched] = useState(false);
   const [loading, setload] = useState(false);
@@ -51,12 +52,13 @@ function Product() {
     await axios
       .get("https://gamerstopbymarcrove.herokuapp.com/api/product/" + prod_id)
       .then(function (response) {
-        setfetched(true);
         setname(response.data.name);
         setcreatedat(response.data.image.split("/")[1]);
         setprice(response.data.price);
-        console.log(response.data);
+
+        setimage(response.data.image);
         setrating(response.data.rating);
+        setfetched(true);
       })
       .catch(function (error) {
         setmessage(error);
@@ -130,11 +132,8 @@ function Product() {
           setmessage("Payment Failed , Reason :" + response.data.reason);
           setload(false);
         }
-      } catch (error) {
-        console.log("Error", error);
-      }
+      } catch (error) {}
     } else {
-      console.log(error.message);
     }
   };
   const handleClose = (event, reason) => {
@@ -147,6 +146,10 @@ function Product() {
 
   function setloading() {
     setload(true);
+  }
+
+  function stringsplit(name) {
+    return name.split("/")[1];
   }
   useEffect(() => {
     getdata();
@@ -163,7 +166,10 @@ function Product() {
         <div className="cart-body">
           <div className="cart-child">
             <img
-              src={`https://gamerstopbymarcrove.herokuapp.com/uploads/${createdat}`}
+              src={
+                "https://gamerstopbymarcrove.herokuapp.com/" +
+                stringsplit(image)
+              }
               alt={name}
             />
           </div>
