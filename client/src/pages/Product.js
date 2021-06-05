@@ -163,7 +163,7 @@ function Product() {
         <div className="cart-body">
           <div className="cart-child">
             <img
-              src={`https://gamerstopbymarcrove.herokuapp.com/${createdat}`}
+              src={`https://gamerstopbymarcrove.herokuapp.com/uploads/${createdat}`}
               alt={name}
             />
           </div>
