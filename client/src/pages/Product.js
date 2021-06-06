@@ -125,7 +125,7 @@ function Product() {
           setload(false);
           setsuccess(true);
           setmessage(
-            "Thank you for the purchase the receipt has been sent to email"
+            "Thank you for the purchase . Download link will be sent to you"
           );
         } else {
           setOpen(true);
@@ -167,8 +167,9 @@ function Product() {
           <div className="cart-child">
             <img
               src={
-                "https://gamerstopbymarcrove.herokuapp.com/" +
-                stringsplit(image)
+                "/static/image.jpg"
+                // "https://gamerstopbymarcrove.herokuapp.com/" +
+                // stringsplit(image)
               }
               alt={name}
             />

@@ -140,10 +140,7 @@ function Releases() {
                   <CardActionArea>
                     <CardMedia
                       className={classes.media}
-                      image={
-                        "https://gamerstopbymarcrove.herokuapp.com/" +
-                        stringsplit(a.image)
-                      }
+                      image={"/static/image.jpg"}
                       title={a.name}
                     />
                     <CardContent>
