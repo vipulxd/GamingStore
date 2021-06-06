@@ -140,7 +140,7 @@ function Releases() {
                   <CardActionArea>
                     <CardMedia
                       className={classes.media}
-                      image={"/static/image.jpg"}
+                      image={"/static/images.jpg"}
                       title={a.name}
                     />
                     <CardContent>

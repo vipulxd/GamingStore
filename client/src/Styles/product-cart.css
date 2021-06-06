@@ -20,9 +20,7 @@
 .cart-child:first-child {
   margin-right: 20px;
 }
-.cartele {
-  margin-top: 0px;
-}
+
 .cart-child img {
   border-radius: 10px;
   max-height: 100% !important;
@@ -31,4 +29,11 @@
 }
 .FormGroup {
   margin-top: 30px;
+}
+.buy-button {
+  height: 45px;
+  width: 160px;
+  background-color: rgb(80, 151, 233);
+  border-radius: 10px;
+  font-size: 1.8rem;
 }

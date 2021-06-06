@@ -5,13 +5,20 @@ import "../Styles/product-cart.css";
 import Header from "../components/Header/index";
 import Skeleton from "react-loading-skeleton";
 import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
+import PropagateLoader from "react-spinners/ClipLoader";
 import MuiAlert from "@material-ui/lab/Alert";
-
+import {css} from "@emotion/react";
 import Snackbar from "@material-ui/core/Snackbar";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
+const override = css`
+  loading: true;
+  color: "#000000";
+  css: "";
+  speedmultiplier: 1;
+`;
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -34,6 +41,9 @@ const CARD_OPTIONS = {
 };
 
 function Product() {
+  let [loadinga, setLoading] = useState(true);
+  let [color, setColor] = useState("#ffffff");
+
   const {prod_id} = useParams();
   const stripe = useStripe();
   const [success, setsuccess] = useState(false);
@@ -167,7 +177,7 @@ function Product() {
           <div className="cart-child">
             <img
               src={
-                "/static/image.jpg"
+                "/static/images.jpg"
                 // "https://gamerstopbymarcrove.herokuapp.com/" +
                 // stringsplit(image)
               }
@@ -185,8 +195,17 @@ function Product() {
                   <CardElement options={CARD_OPTIONS} />
                 </div>
               </fieldset>
-              <button onClick={setloading}>
-                {loading ? <p>loading</p> : <p>buy</p>}
+              <button className="buy-button" onClick={setloading}>
+                {loading ? (
+                  <PropagateLoader
+                    color={color}
+                    loading={loadinga}
+                    css={override}
+                    size={15}
+                  />
+                ) : (
+                  <p>Buy Now</p>
+                )}
               </button>
             </form>
           </div>

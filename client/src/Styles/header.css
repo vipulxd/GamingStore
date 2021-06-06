@@ -1,15 +1,13 @@
 .title_heading a {
   color: rgb(80, 151, 233);
-
+  margin: 0px;
   font-size: 3vw;
 }
 
 .header_outer {
   display: flex;
-  margin: 25px;
+
   justify-content: space-between;
-  /* align-items: center; */
-  /* justify-content: center; */
 }
 .header_input {
   height: 30px;
@@ -18,9 +16,6 @@
   border-color: rgb(80, 151, 233);
 }
 .header_logger {
-  /* margin-top: 3px; */
-  /* margin-left: 190px; */
-
   color: rgb(80, 151, 233);
   font-size: 1.3rem;
   width: 100%;
@@ -28,9 +23,7 @@
   margin: auto !important;
 }
 input {
-  /* background-color: rgb(24, 18, 18); */
   font-size: 1.3rem;
-  /* color: rgb(80, 151, 233); */
 }
 ::placeholder {
   color: black;

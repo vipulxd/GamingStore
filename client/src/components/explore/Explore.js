@@ -83,8 +83,9 @@ function Explore() {
                     <CardMedia
                       className={classes.media}
                       image={
-                        "https://gamerstopbymarcrove.herokuapp.com/" +
-                        stringsplit(b.image)
+                        "/static/images.jpg"
+                        // "https://gamerstopbymarcrove.herokuapp.com/" +
+                        // stringsplit(b.image)
                       }
                       title={b.name}
                     />

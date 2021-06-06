@@ -41,7 +41,7 @@ function Login() {
           onClick={signIn}
           style={{backgroundColor: "rgb(80, 151, 233)", marginLeft: "10px"}}
         >
-          <p className="cartnos">Login</p>
+          <p className="cartnos">Login to Buy Items</p>
         </Button>
       </div>
     </div>
