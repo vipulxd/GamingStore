@@ -5,7 +5,7 @@ import "../Styles/product-cart.css";
 import Header from "../components/Header/index";
 import Skeleton from "react-loading-skeleton";
 import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
-import PropagateLoader from "react-spinners/ClipLoader";
+import HashLoader from "react-spinners/HashLoader";
 import MuiAlert from "@material-ui/lab/Alert";
 import {css} from "@emotion/react";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -197,11 +197,11 @@ function Product() {
               </fieldset>
               <button className="buy-button" onClick={setloading}>
                 {loading ? (
-                  <PropagateLoader
+                  <HashLoader
                     color={color}
                     loading={loadinga}
                     css={override}
-                    size={15}
+                    size={35}
                   />
                 ) : (
                   <p>Buy Now</p>
