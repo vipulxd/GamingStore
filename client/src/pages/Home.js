@@ -13,9 +13,9 @@ function Home() {
         <div className="header-outer">
           <Header />
         </div>
-        <div className="news-outer">
+        {/* <div className="news-outer">
           <News />
-        </div>
+        </div> */}
         <div className="main_div_releases">
           <Releases />
         </div>

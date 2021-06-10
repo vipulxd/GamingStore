@@ -27,9 +27,13 @@ export default function Logout() {
         color="primary"
         className="header_log_btn"
         onClick={signOut}
-        style={{backgroundColor: "rgb(80, 151, 233)", marginLeft: "10px"}}
+        style={{
+          backgroundColor: "black",
+          marginLeft: "10px",
+          marginTop: "30px",
+        }}
       >
-        Logout
+        <p className="cartnos">Logout</p>
       </Button>
     </div>
   );

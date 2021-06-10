@@ -177,9 +177,9 @@ function Product() {
           <div className="cart-child">
             <img
               src={
-                "/static/images.jpg"
-                // "https://gamerstopbymarcrove.herokuapp.com/" +
-                // stringsplit(image)
+                // "/static/images.jpg"
+                "https://gamerstopbymarcrove.herokuapp.com/" +
+                stringsplit(image)
               }
               alt={name}
             />

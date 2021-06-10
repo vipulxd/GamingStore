@@ -11,11 +11,15 @@
   /* margin: 0 10px 10px 10px;
   margin-top: 10px !important; */
   display: flex;
-  height: 450px;
+  height: 400px;
   overflow-y: hidden;
   overflow-x: scroll;
   /* padding: 10px; */
 }
+.buy-btn {
+  color: white;
+}
+
 .cards_explorer:hover {
   transition: transform 0.5s ease;
   transform: scale(1.1);
@@ -32,4 +36,27 @@ button {
   margin-left: 40px;
   margin-bottom: 10px;
   font-size: 3vw;
+}
+@media all and (max-width: 500px) {
+  .makeStyles-root-5 {
+    height: 155px !important;
+  }
+  .MuiButton-outlined {
+    margin-left: 20px !important;
+  }
+  .price-show {
+    font-size: 1rem !important;
+    font-weight: lighter !important;
+    color: black !important;
+  }
+  .makeStyles-fonta-7 {
+    color: black !important;
+    height: 20px !important;
+    font-size: 1rem !important;
+    text-align: center !important;
+    font-weight: normal !important;
+  }
+  .card_outer_explorer {
+    height: auto !important;
+  }
 }

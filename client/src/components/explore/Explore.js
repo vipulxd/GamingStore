@@ -10,13 +10,20 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Skeleton from "react-loading-skeleton";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+import Skeleton, {SkeletonTheme} from "react-loading-skeleton";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
     base: {
       iconColor: "#c4f0ff",
-      color: "black",
+      color: "white",
       fontWeight: 500,
       fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
       fontSize: "16px",
@@ -33,25 +40,26 @@ const CARD_OPTIONS = {
 
 const useStyles = makeStyles({
   root: {
-    width: 280,
+    width: 300,
 
     color: "black",
-    height: 400,
+    height: 300,
   },
   media: {
-    height: 250,
+    height: 200,
   },
   fonta: {
-    color: "#5097e9",
-    fontWeight: "Bold",
+    color: "black",
+    fontWeight: "light",
     fontSize: "1.6vw",
-    height: 50,
+    height: 20,
   },
 });
 
 function Explore() {
   const history = useHistory();
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
   const [retdataa, setretdataa] = useState([]);
   async function fetchdata() {
     await axios
@@ -61,16 +69,52 @@ function Explore() {
       })
       .catch(function (error) {});
   }
+  const user = localStorage.getItem("_email");
+  function onhandleClick(idofprod) {
+    if (user) {
+      handleClick();
+      onhandleRedirect(idofprod);
+    } else {
+      setOpen(true);
+    }
+    // dispatch(addprod(idofprod));
+  }
+
+  const onhandleRedirect = idofprod => history.push("/product/" + idofprod);
   function stringsplit(str) {
     console.log(str.split("/")[1]);
     return str.split("/")[1];
   }
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   useEffect(() => {
     fetchdata();
   }, []);
 
   return (
     <div className="outer-box">
+      {user ? (
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success">
+            Added to Cart
+          </Alert>
+        </Snackbar>
+      ) : (
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="error">
+            Please Login First
+          </Alert>
+        </Snackbar>
+      )}
       <p className="heading_log">Explore more in Store</p>
       <div className="card_outer_explorer">
         {" "}
@@ -83,9 +127,9 @@ function Explore() {
                     <CardMedia
                       className={classes.media}
                       image={
-                        "/static/images.jpg"
-                        // "https://gamerstopbymarcrove.herokuapp.com/" +
-                        // stringsplit(b.image)
+                        // "/static/images.jpg"
+                        "https://gamerstopbymarcrove.herokuapp.com/" +
+                        stringsplit(b.image)
                       }
                       title={b.name}
                     />
@@ -101,18 +145,17 @@ function Explore() {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Button size="small" color="primary" variant="outlined">
-                      {"₹" + b.price}
-                    </Button>
+                    <p className="price-show"> {"₹" + b.price}</p>
 
                     <Button
                       className={classes.butt}
                       size="small"
                       color="primary"
                       variant="outlined"
-                      onClick={() => history.push("/product/" + b._id)}
+                      onClick={() => onhandleClick(b._id)}
+                      style={{backgroundColor: "black", color: "white"}}
                     >
-                      Buy
+                      <p className="buy-btn">Buy</p>
                     </Button>
                   </CardActions>
                 </Card>
@@ -120,8 +163,12 @@ function Explore() {
             );
           })
         ) : (
-          <div className="cart-child">
-            <Skeleton count={4} height={50} />
+          <div className="cart-child" style={{fontSize: 50, lineHeight: 1.1}}>
+            <SkeletonTheme color="#202020" highlightColor="#444">
+              <p>
+                <Skeleton count={5} />
+              </p>
+            </SkeletonTheme>
           </div>
         )}
       </div>

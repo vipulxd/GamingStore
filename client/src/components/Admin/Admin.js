@@ -5,6 +5,12 @@ import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import "../../Styles/admin.css";
 import {makeStyles} from "@material-ui/core";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 function Admin() {
   const classes = makeStyles();
@@ -14,6 +20,8 @@ function Admin() {
     rating: "",
     productImage: "",
   });
+  const [message, setmessage] = useState();
+  const [open, setOpen] = useState(false);
 
   function onSubmit(e) {
     e.preventDefault();
@@ -27,16 +35,26 @@ function Admin() {
 
     axios
       .post(
-        "https://gamerstopbymarcrove.herokuapp.com/api/product/add_prod/vipul.xtr@gmail.com",
+        "http://localhost:9000/api/product/add_prod/vipul.xtr@gmail.com",
         formData
       )
       .then(response => {
-        console.log(response);
+        if (response.data.message === "Product created") {
+          setmessage("Product created Successfully");
+        }
+        setOpen(true);
       })
       .catch(error => {
         console.log(error);
       });
   }
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   function onFileSubmit(e) {
     setgame({...game, productImage: e.target.files[0]});
@@ -50,6 +68,11 @@ function Admin() {
     <div>
       <Header />
       <div className="main_outer">
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success">
+            {message}
+          </Alert>
+        </Snackbar>
         <div className="admin_space">
           <h4> Add Games</h4>
           <form

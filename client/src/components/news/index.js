@@ -6,10 +6,10 @@ function index() {
   return (
     <div className="news-outer">
       <div className="news_outer">
-        <Typist avgTypingDelay={90}>
+        {/* <Typist avgTypingDelay={90}>
           <br />
 
-          <p>
+          {/* <p>
             Ghost recon servers are being compromised by hackers third time
             after 9/11 ~ BBC
           </p>
@@ -20,8 +20,15 @@ function index() {
           <p>
             Hackers asked for 4M for the blueprint stolen last month from
             ubisoft servers
-          </p>
-        </Typist>
+          </p> */}
+        {/* </Typist> */}
+        {/* <div className="banner-img">
+          {" "}
+          <img src="/static/banner.jpg" width="100" height="10"></img>
+          <div className="centered">
+            <Typist avgTypingDelay={90}>Hello Gamers</Typist>
+          </div> */}
+        {/* </div> */}
       </div>
     </div>
   );

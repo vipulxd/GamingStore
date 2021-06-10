@@ -1,5 +1,5 @@
 import React from "react";
-import "../../Styles/header.css";
+import "../../Styles/header-temp.css";
 function Search() {
   return (
     <div>

@@ -33,15 +33,19 @@ function Login() {
 
   return (
     <div>
-      <div className="_headers_log_btn">
+      <div className="_header_log_btn">
         <Button
           variant="contained"
           color="primary"
           className="header_log_btn"
           onClick={signIn}
-          style={{backgroundColor: "rgb(80, 151, 233)", marginLeft: "10px"}}
+          style={{
+            backgroundColor: "black",
+            marginLeft: "10px",
+            marginTop: "30px",
+          }}
         >
-          <p className="cartnos">Login to Buy Items</p>
+          <p className="cartnos">Login to Buy/Add Items</p>
         </Button>
       </div>
     </div>

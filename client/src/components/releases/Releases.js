@@ -14,7 +14,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addprod} from "../../redux/";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, {SkeletonTheme} from "react-loading-skeleton";
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -29,9 +29,9 @@ const useStyles = makeStyles({
     height: 380,
   },
   fonta: {
-    color: "#5097e9",
+    color: "black",
     fontWeight: "Bold",
-    fontSize: "1.6vw",
+    fontSize: "2vw",
     height: 50,
   },
 });
@@ -75,21 +75,25 @@ function Releases() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [retdata, setretdata] = useState([]);
+  const [loaded, setload] = useState(false);
   const user = localStorage.getItem("_email");
   async function fetchdata() {
     await axios
       .get("https://gamerstopbymarcrove.herokuapp.com/api/product/")
       .then(function (response) {
         setretdata(response.data);
-        console.log(response.data);
+        setload(true);
       })
       .catch(function (error) {});
   }
 
   function onhandleClick(idofprod) {
-    // setprod(idofprod);
-    handleClick();
-    onhandleRedirect(idofprod);
+    if (user) {
+      handleClick();
+      onhandleRedirect(idofprod);
+    } else {
+      setOpen(true);
+    }
     // dispatch(addprod(idofprod));
   }
   const onhandleRedirect = idofprod => history.push("/product/" + idofprod);
@@ -97,7 +101,6 @@ function Releases() {
     setOpen(true);
   };
   function stringsplit(str) {
-    console.log(str.split("/")[1]);
     return str.split("/")[1];
   }
   const handleClose = (event, reason) => {
@@ -111,7 +114,7 @@ function Releases() {
   useEffect(() => {
     fetchdata();
   }, []);
-
+  console.log(retdata);
   return (
     <div className="outer-box">
       <div className={classesa.root}>
@@ -129,59 +132,63 @@ function Releases() {
           </Snackbar>
         )}
       </div>
-      <p className="heading_log">Recent releases</p>
-      <div className="card_outer_releases">
-        {" "}
-        {retdata.length > 0 ? (
-          retdata.slice(Math.max(retdata.length - 3, 0)).map(a => {
-            return (
-              <div className="cards_releases">
-                <Card className={classes.root}>
-                  <CardActionArea>
-                    <CardMedia
-                      className={classes.media}
-                      image={"/static/images.jpg"}
-                      title={a.name}
-                    />
-                    <CardContent>
-                      <Typography
-                        variant="h6"
-                        component="h6"
-                        className={classes.fonta}
+      <div className="releases-outer">
+        <p className="heading_log">Recent releases</p>
+        <div className="card_outer_releases">
+          {" "}
+          {retdata.length > 0 ? (
+            retdata.slice(Math.max(retdata.length - 3, 0)).map(a => {
+              return (
+                <div className="cards_releases">
+                  <Card className={classes.root}>
+                    <CardActionArea>
+                      <CardMedia
+                        className={classes.media}
+                        image={
+                          //   "/static/images.jpg"
+                          "https://gamerstopbymarcrove.herokuapp.com/" +
+                          stringsplit(a.image)
+                        }
+                        title={a.name}
+                      />
+                      <CardContent>
+                        <Typography
+                          variant="h6"
+                          component="h6"
+                          className={classes.fonta}
+                        >
+                          {a.name}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                      <p className="price-show"> {"₹" + a.price}</p>
+                      {/* </Button> */}
+                      <Button
+                        className={classes.butt}
+                        size="medium"
+                        color="secondary"
+                        variant="outlined"
+                        onClick={() => onhandleClick(a._id)}
+                        style={{backgroundColor: "black", marginLeft: "20px"}}
                       >
-                        {a.name}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      color="primary"
-                      variant="outlined"
-                      className={classes.button}
-                    >
-                      {"₹" + a.price}
-                    </Button>
-
-                    <Button
-                      className={classes.butt}
-                      size="medium"
-                      color="secondary"
-                      variant="outlined"
-                      onClick={() => history.push("/product/" + a._id)}
-                    >
-                      Buy
-                    </Button>
-                  </CardActions>
-                </Card>
-              </div>
-            );
-          })
-        ) : (
-          <div className="cart-child">
-            <Skeleton count={4} height={50} />
-          </div>
-        )}
+                        <p className="buy-btn">Buy</p>
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </div>
+              );
+            })
+          ) : (
+            <div className="cart-child" style={{fontSize: 50, lineHeight: 1.1}}>
+              <SkeletonTheme color="#202020" highlightColor="#444">
+                <p>
+                  <Skeleton count={6} />
+                </p>
+              </SkeletonTheme>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
