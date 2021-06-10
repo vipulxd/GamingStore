@@ -30,7 +30,7 @@ export default function Logout() {
         style={{
           backgroundColor: "black",
           marginLeft: "10px",
-          marginTop: "30px",
+          marginTop: "0px",
         }}
       >
         <p className="cartnos">Logout</p>

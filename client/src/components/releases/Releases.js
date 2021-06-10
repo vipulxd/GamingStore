@@ -21,18 +21,18 @@ function Alert(props) {
 
 const useStyles = makeStyles({
   root: {
-    width: 350,
+    width: 380,
 
-    color: "black",
+    color: "#444",
   },
   media: {
     height: 380,
   },
   fonta: {
-    color: "black",
+    color: "#444",
     fontWeight: "Bold",
     fontSize: "2vw",
-    height: 50,
+    height: 30,
   },
 });
 
@@ -50,7 +50,7 @@ const CARD_OPTIONS = {
     base: {
       iconColor: "#c4f0ff",
       color: "black",
-      fontWeight: 500,
+      fontWeight: 400,
       fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
       fontSize: "16px",
       fontSmoothing: "antialiased",
@@ -133,7 +133,9 @@ function Releases() {
         )}
       </div>
       <div className="releases-outer">
-        <p className="heading_log">Recent releases</p>
+        <p className="heading_log" style={{color: "whitesmoke"}}>
+          Recent releases
+        </p>
         <div className="card_outer_releases">
           {" "}
           {retdata.length > 0 ? (
@@ -167,7 +169,7 @@ function Releases() {
                       <Button
                         className={classes.butt}
                         size="medium"
-                        color="secondary"
+                        color="#444"
                         variant="outlined"
                         onClick={() => onhandleClick(a._id)}
                         style={{backgroundColor: "black", marginLeft: "20px"}}

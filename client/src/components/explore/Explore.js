@@ -115,7 +115,9 @@ function Explore() {
           </Alert>
         </Snackbar>
       )}
-      <p className="heading_log">Explore more in Store</p>
+      <p className="heading_log" style={{color: "whitesmoke"}}>
+        Explore more in Store
+      </p>
       <div className="card_outer_explorer">
         {" "}
         {retdataa.length > 0 ? (

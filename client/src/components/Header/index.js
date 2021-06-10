@@ -15,11 +15,12 @@ function Header() {
   const history = useHistory();
 
   const noOfGames = useSelector(state => state.CartInfo.products);
+
   const listenScrollEvent = event => {
     if (window.scrollY < 73) {
       return setHeader("header_outer");
     } else if (window.scrollY > 70) {
-      return setHeader("header2");
+      return setHeader("header_outer");
     }
   };
 
@@ -31,8 +32,8 @@ function Header() {
     <div className={header}>
       <div className="title_heading">
         <SportsEsportsIcon
-          onClick={() => window.open("/")}
-          style={{fontSize: "100px", color: "black"}}
+          onClick={() => window.location.reload()}
+          style={{fontSize: "100px", color: "whitesmoke"}}
         />
       </div>
       <div className="search_box elementtop">
@@ -48,7 +49,7 @@ function Header() {
             className="header_log_btn elementtop"
             style={{
               backgroundColor: "black",
-              marginTop: "30px",
+              marginTop: "0px",
               // width: "130px",
             }}
           >
@@ -60,37 +61,38 @@ function Header() {
           </Button>
         </NavLink>
       </div>
-      <div classNAme="header_logger elementtop">
-        {_user ? (
-          <>
-            {" "}
-            {_mail === "vipul.xtr@gmail.com" ? (
-              <div className="admin_butt elementtop">
-                <NavLink to="/admin">
-                  <span>
-                    {" "}
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      className="header_log_btn elementtop"
-                      style={{
-                        backgroundColor: "black",
-                      }}
-                    >
-                      <p className="cartnos">Admin Panel</p>
-                    </Button>
-                  </span>
-                </NavLink>
-              </div>
-            ) : (
-              <></>
-            )}
+
+      {_user ? (
+        <>
+          {" "}
+          {_mail === "vipul.xtr@gmail.com" ? (
+            <div className="admin_butt elementtop">
+              <NavLink to="/admin">
+                <span>
+                  {" "}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className="header_log_btn elementtop"
+                    style={{
+                      backgroundColor: "black",
+                    }}
+                  >
+                    <p className="cartnos">Admin Panel</p>
+                  </Button>
+                </span>
+              </NavLink>
+            </div>
+          ) : (
+            <></>
+          )}
+          <div className="header_log_btn">
             <Logout />
-          </>
-        ) : (
-          <Login />
-        )}
-      </div>
+          </div>
+        </>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 }

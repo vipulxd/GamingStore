@@ -17,9 +17,9 @@
 }
 .card_outer_releases {
   justify-content: space-evenly;
-  display: block ruby;
+  display: flex;
   padding: 20px;
-
+  justify-content: space-between;
   overflow-y: hidden;
   overflow-x: scroll;
 }
@@ -50,6 +50,7 @@
   .heading_log {
     font-size: 1.8rem !important;
     text-align: left;
+
     margin: 50px 0px 0px 10px !important;
   }
   .price-show {
