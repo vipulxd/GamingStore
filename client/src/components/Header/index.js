@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from "react";
+import {React} from "react";
 import "../../Styles/header-temp.css";
 import {NavLink, useHistory} from "react-router-dom";
 import Search from "./Search";
@@ -11,28 +11,16 @@ import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 function Header() {
   const _user = localStorage.getItem("_user_name");
   const _mail = localStorage.getItem("_email");
-  const [header, setHeader] = useState("header_outer");
+
   const history = useHistory();
 
   const noOfGames = useSelector(state => state.CartInfo.products);
 
-  const listenScrollEvent = event => {
-    if (window.scrollY < 73) {
-      return setHeader("header_outer");
-    } else if (window.scrollY > 70) {
-      return setHeader("header_outer");
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", listenScrollEvent);
-    return () => window.removeEventListener("scroll", listenScrollEvent);
-  }, []);
   return (
-    <div className={header}>
+    <div className="header_outer">
       <div className="title_heading">
         <SportsEsportsIcon
-          onClick={() => window.location.reload()}
+          onClick={() => history.push("/")}
           style={{fontSize: "100px", color: "whitesmoke"}}
         />
       </div>
@@ -50,7 +38,6 @@ function Header() {
             style={{
               backgroundColor: "black",
               marginTop: "0px",
-              // width: "130px",
             }}
           >
             <ShoppingCartRoundedIcon style={{color: "white"}} />

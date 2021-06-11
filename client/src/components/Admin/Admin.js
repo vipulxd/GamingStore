@@ -22,7 +22,7 @@ function Admin() {
   });
   const [message, setmessage] = useState();
   const [open, setOpen] = useState(false);
-
+  const useremail = localStorage.getItem("_email");
   function onSubmit(e) {
     e.preventDefault();
 
@@ -34,10 +34,7 @@ function Admin() {
     formData.append("productImage", game.productImage);
 
     axios
-      .post(
-        "http://localhost:9000/api/product/add_prod/vipul.xtr@gmail.com",
-        formData
-      )
+      .post(`http://localhost:9000/api/product/add_prod/${useremail}`, formData)
       .then(response => {
         if (response.data.message === "Product created") {
           setmessage("Product created Successfully");

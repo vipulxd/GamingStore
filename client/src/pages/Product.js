@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import axios from "axios";
 import "../Styles/product-cart.css";
 import Header from "../components/Header/index";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, {SkeletonTheme} from "react-loading-skeleton";
 import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import HashLoader from "react-spinners/HashLoader";
 import MuiAlert from "@material-ui/lab/Alert";
@@ -41,19 +41,18 @@ const CARD_OPTIONS = {
 };
 
 function Product() {
-  let [loadinga, setLoading] = useState(true);
-  let [color, setColor] = useState("#ffffff");
+  const [loadinga, setLoading] = useState(true);
 
   const {prod_id} = useParams();
   const stripe = useStripe();
   const [success, setsuccess] = useState(false);
   const elements = useElements();
   const [name, setname] = useState();
-  const [createdat, setcreatedat] = useState();
+  const [createdata, setcreatedata] = useState();
   const [price, setprice] = useState();
   const [rating, setrating] = useState();
   const [open, setOpen] = useState(false);
-  const [image, setimage] = useState();
+
   const [message, setmessage] = useState();
   const [isfetched, setfetched] = useState(false);
   const [loading, setload] = useState(false);
@@ -63,10 +62,9 @@ function Product() {
       .get("https://gamerstopbymarcrove.herokuapp.com/api/product/" + prod_id)
       .then(function (response) {
         setname(response.data.name);
-        setcreatedat(response.data.image.split("/")[1]);
+        setcreatedata(response.data.image.split("/")[1]);
         setprice(response.data.price);
 
-        setimage(response.data.image);
         setrating(response.data.rating);
         setfetched(true);
       })
@@ -133,6 +131,7 @@ function Product() {
         if (response.data.status == "success") {
           setOpen(true);
           setload(false);
+          setLoading(false);
           setsuccess(true);
           setmessage(
             "Thank you for the purchase . Download link will be sent to you"
@@ -176,11 +175,7 @@ function Product() {
         <div className="cart-body">
           <div className="cart-child">
             <img
-              src={
-                // "/static/images.jpg"
-                "https://gamerstopbymarcrove.herokuapp.com/" +
-                stringsplit(image)
-              }
+              src={`https://gamerstopbymarcrove.herokuapp.com/${createdata}`}
               alt={name}
             />
           </div>
@@ -198,7 +193,7 @@ function Product() {
               <button className="buy-button" onClick={setloading}>
                 {loading ? (
                   <HashLoader
-                    color={color}
+                    color={"#ffffff"}
                     loading={loadinga}
                     css={override}
                     size={35}
@@ -211,8 +206,12 @@ function Product() {
           </div>
         </div>
       ) : (
-        <div className="cart-child">
-          <Skeleton count={4} height={50} />
+        <div className="cart-child" style={{fontSize: 50, lineHeight: 1.1}}>
+          <SkeletonTheme color="#202020" highlightColor="black">
+            <p>
+              <Skeleton count={6} />
+            </p>
+          </SkeletonTheme>
         </div>
       )}
     </div>

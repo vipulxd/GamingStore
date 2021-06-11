@@ -1,6 +1,6 @@
 import React from "react";
 import "../../Styles/news.css";
-import Typist from "react-typist";
+// import Typist from "react-typist";
 
 function index() {
   return (

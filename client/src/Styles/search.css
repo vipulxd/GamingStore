@@ -1,0 +1,23 @@
+.result_search {
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+}
+.child_search {
+  background-color: rgba(34, 34, 34, 0.384);
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+
+  justify-content: space-around;
+  border-radius: 3px;
+}
+.child_elements {
+  width: 200px;
+  margin-top: 30px;
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.8rem;
+}

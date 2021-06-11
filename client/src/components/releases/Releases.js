@@ -10,8 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import {useDispatch, useSelector} from "react-redux";
-import {addprod} from "../../redux/";
+
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import Skeleton, {SkeletonTheme} from "react-loading-skeleton";
@@ -22,17 +21,20 @@ function Alert(props) {
 const useStyles = makeStyles({
   root: {
     width: 380,
-
+    height: 530,
     color: "#444",
   },
   media: {
-    height: 380,
+    height: 440,
   },
   fonta: {
+    margin: 0,
+
+    lineHeight: 1,
     color: "#444",
     fontWeight: "Bold",
     fontSize: "2vw",
-    height: 30,
+    height: 10,
   },
 });
 
@@ -40,49 +42,26 @@ const useStylesa = makeStyles(theme => ({
   root: {
     width: "100%",
     "& > * + *": {
-      marginTop: theme.spacing(2),
+      marginTop: theme.spacing(3),
     },
   },
 }));
-const CARD_OPTIONS = {
-  iconStyle: "solid",
-  style: {
-    base: {
-      iconColor: "#c4f0ff",
-      color: "black",
-      fontWeight: 400,
-      fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
-      fontSize: "16px",
-      fontSmoothing: "antialiased",
-      ":-webkit-autofill": {color: "#fce883"},
-      "::placeholder": {color: "#87bbfd"},
-    },
-    invalid: {
-      iconColor: "#ffc7ee",
-      color: "#ffc7ee",
-    },
-  },
-};
 
 function Releases() {
   const history = useHistory();
-  const noofGames = useSelector(state => state.CartInfo.products);
 
   const classesa = useStylesa();
   const [open, setOpen] = useState(false);
-  const [logged, setlogged] = useState(false);
-  const [prod, setprod] = useState([]);
-  const dispatch = useDispatch();
+
   const classes = useStyles();
   const [retdata, setretdata] = useState([]);
-  const [loaded, setload] = useState(false);
+
   const user = localStorage.getItem("_email");
   async function fetchdata() {
     await axios
       .get("https://gamerstopbymarcrove.herokuapp.com/api/product/")
       .then(function (response) {
         setretdata(response.data);
-        setload(true);
       })
       .catch(function (error) {});
   }
@@ -147,7 +126,6 @@ function Releases() {
                       <CardMedia
                         className={classes.media}
                         image={
-                          //   "/static/images.jpg"
                           "https://gamerstopbymarcrove.herokuapp.com/" +
                           stringsplit(a.image)
                         }
@@ -172,7 +150,7 @@ function Releases() {
                         color="#444"
                         variant="outlined"
                         onClick={() => onhandleClick(a._id)}
-                        style={{backgroundColor: "black", marginLeft: "20px"}}
+                        style={{backgroundColor: "black", marginLeft: "40px"}}
                       >
                         <p className="buy-btn">Buy</p>
                       </Button>

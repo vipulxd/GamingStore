@@ -18,26 +18,6 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const CARD_OPTIONS = {
-  iconStyle: "solid",
-  style: {
-    base: {
-      iconColor: "#c4f0ff",
-      color: "white",
-      fontWeight: 500,
-      fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
-      fontSize: "16px",
-      fontSmoothing: "antialiased",
-      ":-webkit-autofill": {color: "#fce883"},
-      "::placeholder": {color: "#87bbfd"},
-    },
-    invalid: {
-      iconColor: "#ffc7ee",
-      color: "#ffc7ee",
-    },
-  },
-};
-
 const useStyles = makeStyles({
   root: {
     width: 300,
@@ -46,13 +26,14 @@ const useStyles = makeStyles({
     height: 300,
   },
   media: {
-    height: 200,
+    height: 210,
   },
   fonta: {
+    margin: 0,
     color: "black",
     fontWeight: "light",
     fontSize: "1.6vw",
-    height: 20,
+    height: 10,
   },
 });
 
@@ -77,7 +58,6 @@ function Explore() {
     } else {
       setOpen(true);
     }
-    // dispatch(addprod(idofprod));
   }
 
   const onhandleRedirect = idofprod => history.push("/product/" + idofprod);
@@ -155,7 +135,11 @@ function Explore() {
                       color="primary"
                       variant="outlined"
                       onClick={() => onhandleClick(b._id)}
-                      style={{backgroundColor: "black", color: "white"}}
+                      style={{
+                        backgroundColor: "black",
+                        marginLeft: "30px",
+                        color: "white",
+                      }}
                     >
                       <p className="buy-btn">Buy</p>
                     </Button>
