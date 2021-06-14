@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from "react";
+import {React, useState, useEffect, useLayoutEffect} from "react";
 import "../../Styles/releases.css";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
@@ -10,7 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-
+import Fade from "react-reveal";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import Skeleton, {SkeletonTheme} from "react-loading-skeleton";
@@ -20,17 +20,18 @@ function Alert(props) {
 
 const useStyles = makeStyles({
   root: {
-    width: 380,
-    height: 530,
+    width: 350,
+    height: 500,
     color: "#444",
+    borderRadius: "40px",
   },
   media: {
-    height: 440,
+    height: 400,
   },
   fonta: {
     margin: 0,
-
-    lineHeight: 1,
+    textAlign: "center",
+    lineHeight: 0.1,
     color: "#444",
     fontWeight: "Bold",
     fontSize: "2vw",
@@ -111,52 +112,56 @@ function Releases() {
           </Snackbar>
         )}
       </div>
+
       <div className="releases-outer">
         <p className="heading_log" style={{color: "whitesmoke"}}>
           Recent releases
         </p>
+
         <div className="card_outer_releases">
           {" "}
           {retdata.length > 0 ? (
             retdata.slice(Math.max(retdata.length - 3, 0)).map(a => {
               return (
-                <div className="cards_releases">
-                  <Card className={classes.root}>
-                    <CardActionArea>
-                      <CardMedia
-                        className={classes.media}
-                        image={
-                          "https://gamerstopbymarcrove.herokuapp.com/" +
-                          stringsplit(a.image)
-                        }
-                        title={a.name}
-                      />
-                      <CardContent>
-                        <Typography
-                          variant="h6"
-                          component="h6"
-                          className={classes.fonta}
+                <Fade left>
+                  <div className="cards_releases">
+                    <Card className={classes.root}>
+                      <CardActionArea>
+                        <CardMedia
+                          className={classes.media}
+                          image={
+                            "https://gamerstopbymarcrove.herokuapp.com/" +
+                            stringsplit(a.image)
+                          }
+                          title={a.name}
+                        />
+                        <CardContent>
+                          <Typography
+                            variant="h6"
+                            component="h6"
+                            className={classes.fonta}
+                          >
+                            {a.name}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                      <CardActions>
+                        <p className="price-show"> {"₹" + a.price}</p>
+                        {/* </Button> */}
+                        <Button
+                          className={classes.butt}
+                          size="medium"
+                          color="#444"
+                          variant="outlined"
+                          onClick={() => onhandleClick(a._id)}
+                          style={{backgroundColor: "black", marginLeft: "40px"}}
                         >
-                          {a.name}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <p className="price-show"> {"₹" + a.price}</p>
-                      {/* </Button> */}
-                      <Button
-                        className={classes.butt}
-                        size="medium"
-                        color="#444"
-                        variant="outlined"
-                        onClick={() => onhandleClick(a._id)}
-                        style={{backgroundColor: "black", marginLeft: "40px"}}
-                      >
-                        <p className="buy-btn">Buy</p>
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </div>
+                          <p className="buy-btn">Buy</p>
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </div>
+                </Fade>
               );
             })
           ) : (

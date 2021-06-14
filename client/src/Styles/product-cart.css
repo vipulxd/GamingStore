@@ -37,3 +37,53 @@
   border-radius: 10px;
   font-size: 1.8rem;
 }
+.temp1 {
+  display: grid;
+  height: 350px;
+  margin: 40px;
+  padding: 40px;
+  border-radius: 30px;
+  background-color: black;
+  grid-template-columns: 600px 200px 200px;
+  grid-template-rows: 50px;
+  justify-content: center;
+}
+.baby-temp1 {
+  grid-row: span 4;
+  /* display: flex; */
+  padding: 10px;
+}
+.baby-temp1 img {
+  display: block;
+  border-radius: 30px;
+  max-height: 100%;
+  max-width: 100%;
+}
+.baby-temp2 {
+  grid-column: span 2;
+}
+.baby-temp3 {
+  grid-column: span 2;
+}
+.baby-temp4 {
+  grid-column: span 2;
+}
+.bbytmp {
+  justify-content: center;
+  padding: 10px;
+  /* background-color: black; */
+}
+.baby-temp5 {
+  height: 10px;
+}
+.baby-temp5 button {
+  background-color: grey;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+}
+.temp78 {
+  padding: 8px;
+  color: white;
+}

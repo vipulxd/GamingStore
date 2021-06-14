@@ -1,0 +1,18 @@
+/* .who {
+  display: grid;
+  height: 400px;
+  width: 300px;
+
+  grid-template-columns: 100px 100px 100px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 300px 400px;
+}
+
+.who1 {
+  grid-column: span 3;
+  grid-row: span 3;
+}
+.who2 {
+  grid-column: span 3;
+} */

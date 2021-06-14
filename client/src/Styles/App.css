@@ -1,11 +1,23 @@
 * {
   margin: 0px;
-  /* border: 1px solid black; */
+  /* border: 1px solid white; */
   font-family: Roboto, sans-serif !important;
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge add Firefox */
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* Firefox */
 }
 body {
   height: 100%;
   background-color: #222;
+}
+body ::-webkit-scrollbar {
+  display: none;
 }
 
 html {

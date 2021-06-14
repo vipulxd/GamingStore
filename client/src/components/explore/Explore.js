@@ -30,6 +30,9 @@ const useStyles = makeStyles({
   },
   fonta: {
     margin: 0,
+    margin: 0,
+    textAlign: "center",
+    lineHeight: 0.1,
     color: "black",
     fontWeight: "light",
     fontSize: "1.6vw",

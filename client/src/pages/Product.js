@@ -172,40 +172,66 @@ function Product() {
       </Snackbar>
       <Header />
       {isfetched ? (
-        <div className="cart-body">
-          <div className="cart-child">
-            <img
-              src={`https://gamerstopbymarcrove.herokuapp.com/${createdata}`}
-              alt={name}
-            />
+        <div className="temp1">
+          <div className="baby-temp1">
+            {
+              <img
+                src={`https://gamerstopbymarcrove.herokuapp.com/${createdata}`}
+                alt={name}
+              />
+            }
           </div>
-          <div className="cart-child">
-            <h1 className="cartele">{name}</h1>
-            <h4 className="cartele">₹ {price} </h4>
-            <h4 className="cartele">{findrating(rating)}</h4>
-
-            <form onSubmit={handleSubmit}>
-              <fieldset className="FormGroup">
-                <div className="FormRow">
-                  <CardElement options={CARD_OPTIONS} />
-                </div>
-              </fieldset>
-              <button className="buy-button" onClick={setloading}>
-                {loading ? (
-                  <HashLoader
-                    color={"#ffffff"}
-                    loading={loadinga}
-                    css={override}
-                    size={35}
-                  />
-                ) : (
-                  <p>Buy Now</p>
-                )}
-              </button>
-            </form>
+          <div className="baby-temp2 bbytmp">
+            <h1>{name}</h1>
+          </div>
+          <div className="baby-temp3 bbytmp">{"₹" + " " + price}</div>
+          <div className="baby-temp4 bbytmp">{findrating(rating)}</div>
+          <div className="baby-temp5 bbytmp">
+            <button>
+              <p className="temp78">Add to Cart</p>
+            </button>
+          </div>
+          <div className="baby-temp5 bbytmp">
+            {" "}
+            <button>
+              <p className="temp78">Buy Now</p>
+            </button>
           </div>
         </div>
       ) : (
+        //  <div className="cart-body">
+        //     <div className="cart-child">
+        //       <img
+        //         src={`https://gamerstopbymarcrove.herokuapp.com/${createdata}`}
+        //         alt={name}
+        //       />
+        //     </div>
+        //     <div className="cart-child">
+        //       <h1 className="cartele">{name}</h1>
+        //       <h4 className="cartele">₹ {price} </h4>
+        //       <h4 className="cartele">{findrating(rating)}</h4>
+
+        //       <form onSubmit={handleSubmit}>
+        //         <fieldset className="FormGroup">
+        //           <div className="FormRow">
+        //             {/* <CardElement options={CARD_OPTIONS} /> */}
+        //           </div>
+        //         </fieldset>
+        //         <button className="buy-button" onClick={setloading}>
+        //           {loading ? (
+        //             <HashLoader
+        //               color={"#ffffff"}
+        //               loading={loadinga}
+        //               css={override}
+        //               size={35}
+        //             />
+        //           ) : (
+        //             <p>Buy Now</p>
+        //           )}
+        //         </button>
+        //       </form>
+        //     </div>
+        //   </div>
         <div className="cart-child" style={{fontSize: 50, lineHeight: 1.1}}>
           <SkeletonTheme color="#202020" highlightColor="black">
             <p>

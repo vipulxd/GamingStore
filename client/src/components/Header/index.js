@@ -1,4 +1,4 @@
-import {React} from "react";
+import {React, useState, useEffect} from "react";
 import "../../Styles/header-temp.css";
 import {NavLink, useHistory} from "react-router-dom";
 import Search from "./Search";
@@ -7,15 +7,24 @@ import Button from "@material-ui/core/Button";
 import Logout from "../Loggers/Logout";
 import {useSelector} from "react-redux";
 import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
+import Shake from "react-reveal/Shake";
 import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 function Header() {
   const _user = localStorage.getItem("_user_name");
   const _mail = localStorage.getItem("_email");
-
+  const [count, setcount] = useState(0);
   const history = useHistory();
 
   const noOfGames = useSelector(state => state.CartInfo.products);
-
+  useEffect(() => {
+    setInterval(
+      () =>
+        function () {
+          setcount(count + 1);
+        },
+      1000
+    );
+  }, []);
   return (
     <div className="header_outer">
       <div className="title_heading">
@@ -36,7 +45,7 @@ function Header() {
             color="primary"
             className="header_log_btn elementtop"
             style={{
-              backgroundColor: "black",
+              backgroundColor: "grey",
               marginTop: "0px",
             }}
           >
@@ -78,7 +87,9 @@ function Header() {
           </div>
         </>
       ) : (
-        <Login />
+        <Shake>
+          <Login />
+        </Shake>
       )}
     </div>
   );

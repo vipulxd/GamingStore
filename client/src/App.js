@@ -11,6 +11,7 @@ import {useSelector} from "react-redux";
 import PrivateRoute from "./components/PrivateRoute";
 import About from "./components/About";
 import Product from "./pages/Product";
+import MostPurchase from "./components/Most-purchased";
 function App() {
   const isAdmin = useSelector(state => state.UserInfo.acctype);
 
@@ -30,6 +31,7 @@ function App() {
             path="/admin"
             exact
           />
+          <Route path="/temp" component={MostPurchase}></Route>
           <Route path="/about" component={About} />
           <Route path="/cart" exact component={Cart} />
           <Route path="/product/:prod_id" exact component={Product} />

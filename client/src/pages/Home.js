@@ -1,25 +1,32 @@
-import {React, useEffect} from "react";
+import {React, useEffect, useState, useLayoutEffect} from "react";
 import Header from "../components/Header/index";
 import {useDispatch, useSelector} from "react-redux";
 import Footer from "../components/Footer/index";
 import Releases from "../components/releases/Releases";
 import Explore from "../components/explore/Explore";
+import Fade from "react-reveal";
 // import News from "../components/news/index";
 import "../Styles/App.css";
 import axios from "axios";
 import {add_prod_name} from "../redux/Products/Actions";
 function Home() {
+  const [load1, setload1] = useState(false);
+  const [load2, setload2] = useState(false);
   const dispatch = useDispatch();
   async function fetchdata() {
     await axios
       .get("https://gamerstopbymarcrove.herokuapp.com/api/product/")
       .then(function (response) {
         dispatch(add_prod_name(response.data));
+        setload1(true);
       })
       .catch(function (error) {});
   }
 
   useEffect(() => {
+    window.onscroll = () => {
+      // setload1(false);
+    };
     fetchdata();
   }, []);
 
@@ -36,7 +43,9 @@ function Home() {
           <Releases />
         </div>
         <div className="main_div_explore">
-          <Explore />
+          <Fade right opposite when={load1}>
+            <Explore />
+          </Fade>
         </div>
 
         <div className="footer_outer">
