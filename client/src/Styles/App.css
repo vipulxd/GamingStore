@@ -41,13 +41,23 @@ html {
   overflow: scroll;
   overflow-x: hidden;
 }
-@media all and (max-width: 300px) {
-  .news-outer {
-    display: none !important;
+@media all and (max-width: 360px) {
+  .home_outer {
+    min-height: 100px;
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/* .news-outer {
+    display: none !important;
+  }
+  .header_outer {
+    display: grid !important;
+    grid-template-columns: auto !important;
+    width: 100%;
+  }
+} */
+
+/* @media (prefers-color-scheme: dark) {
   body {
     background-color: #1c1c1e;
     color: #fefefe;
@@ -58,4 +68,4 @@ html {
   img {
     filter: grayscale((20%));
   }
-}
+} */

@@ -90,6 +90,7 @@
   }
   .header_input {
     border: 3px solid black;
+    margin-left: 10px;
   }
   .title_heading {
     display: block;
@@ -110,5 +111,8 @@
   }
   .header_log_btn {
     display: none !important;
+  }
+  .card_outer_explorer {
+    height: 250px !important;
   }
 }

@@ -43,9 +43,7 @@ function Home() {
           <Releases />
         </div>
         <div className="main_div_explore">
-          <Fade right opposite when={load1}>
-            <Explore />
-          </Fade>
+          <Explore />
         </div>
 
         <div className="footer_outer">

@@ -27,6 +27,9 @@ const useStyles = makeStyles({
   },
   media: {
     height: 400,
+    width: 310,
+    borderRadius: 10,
+    boxShadow: "inset 3px 3px 5px 2px #444",
   },
   fonta: {
     margin: 0,
@@ -65,6 +68,43 @@ function Releases() {
         setretdata(response.data);
       })
       .catch(function (error) {});
+  }
+  function findrating(r) {
+    switch (r) {
+      case 1:
+        return "⭐️";
+        break;
+      case 2:
+        return "⭐️⭐️";
+        break;
+      case 3:
+        return "⭐️⭐️⭐️";
+        break;
+      case 4:
+        return "⭐️⭐️⭐️⭐️";
+        break;
+      case 5:
+        return "⭐️⭐️⭐️⭐️⭐️";
+        break;
+      case 6:
+        return "⭐️⭐️⭐️⭐️⭐️⭐️⭐";
+        break;
+      case 7:
+        return "⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+        break;
+      case 8:
+        return "⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+        break;
+      case 9:
+        return "⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+        break;
+      case 10:
+        return "⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+        break;
+
+      default:
+        return "Not Rated";
+    }
   }
 
   function onhandleClick(idofprod) {
@@ -124,42 +164,35 @@ function Releases() {
             retdata.slice(Math.max(retdata.length - 3, 0)).map(a => {
               return (
                 <Fade left>
-                  <div className="cards_releases">
-                    <Card className={classes.root}>
-                      <CardActionArea>
-                        <CardMedia
-                          className={classes.media}
-                          image={
-                            "https://gamerstopbymarcrove.herokuapp.com/" +
-                            stringsplit(a.image)
-                          }
-                          title={a.name}
-                        />
-                        <CardContent>
-                          <Typography
-                            variant="h6"
-                            component="h6"
-                            className={classes.fonta}
-                          >
-                            {a.name}
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                      <CardActions>
-                        <p className="price-show"> {"₹" + a.price}</p>
-                        {/* </Button> */}
-                        <Button
-                          className={classes.butt}
-                          size="medium"
-                          color="#444"
-                          variant="outlined"
-                          onClick={() => onhandleClick(a._id)}
-                          style={{backgroundColor: "black", marginLeft: "40px"}}
-                        >
-                          <p className="buy-btn">Buy</p>
-                        </Button>
-                      </CardActions>
-                    </Card>
+                  <div className="tempa">
+                    <div className="tempb">
+                      <CardMedia
+                        className={classes.media}
+                        image={
+                          // "/static/images.jpg"
+                          "https://gamerstopbymarcrove.herokuapp.com/" +
+                          stringsplit(a.image)
+                        }
+                        title={"hello"}
+                      />
+                    </div>
+                    <div className="tempc">
+                      <div className="tempd">{a.name}</div>
+                      <div className="tempe"> {findrating(a.rating)}</div>
+                      <div className="tempf">
+                        <div className="card_button">
+                          <button>
+                            <p style={{color: "white"}}>Buy</p>
+                          </button>
+                        </div>
+                        <div className="card_button">
+                          <button>
+                            {" "}
+                            <p style={{color: "white"}}> Add to Cart</p>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </Fade>
               );

@@ -32,8 +32,18 @@
 }
 @media all and (max-width: 500px) {
   .MuiCardMedia-root {
-    height: 100px !important;
+    height: 200px !important;
   }
+  .tempa {
+    font-size: 0.6rem;
+    height: 200px !important;
+  }
+  .tempea {
+    font-size: 0.6rem;
+    height: 200px !important;
+  }
+}
+/*
   .MuiCard-root {
     height: 150px !important;
     width: 150px !important;
@@ -48,12 +58,14 @@
     text-align: center !important;
     font-weight: normal !important;
   }
-  .heading_log {
-    font-size: 1.8rem !important;
-    text-align: left;
+  */
+.heading_log {
+  font-size: 1.8rem !important;
+  text-align: left;
 
-    margin: 50px 0px 0px 10px !important;
-  }
+  margin: 50px 0px 0px 10px !important;
+}
+/*
   .price-show {
     font-size: 1rem !important;
     font-weight: bold;
@@ -62,9 +74,9 @@
   .cards_releases {
     margin: 0px 7px;
     /* pointer-events: none; */
-  }
+/* } */
 
-  .MuiButton-label {
+/* .MuiButton-label {
     height: 10px !important;
   }
   .MuiCardActions-spacing {
@@ -78,9 +90,8 @@
     font-size: 0.8rem !important;
     font-weight: bold !important;
   }
-}
-
-.who {
+} */
+*/ .who {
   display: grid !important;
   height: 400px;
   width: 300px;

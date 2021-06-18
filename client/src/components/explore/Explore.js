@@ -26,17 +26,10 @@ const useStyles = makeStyles({
     height: 300,
   },
   media: {
-    height: 210,
-  },
-  fonta: {
-    margin: 0,
-    margin: 0,
-    textAlign: "center",
-    lineHeight: 0.1,
-    color: "black",
-    fontWeight: "light",
-    fontSize: "1.6vw",
-    height: 10,
+    height: 300,
+    width: 310,
+    borderRadius: 10,
+    boxShadow: "inset 1px 3px 5px 2px #333",
   },
 });
 
@@ -52,6 +45,43 @@ function Explore() {
         setretdataa(response.data);
       })
       .catch(function (error) {});
+  }
+  function findrating(r) {
+    switch (r) {
+      case 1:
+        return "⭐️";
+        break;
+      case 2:
+        return "⭐️⭐️";
+        break;
+      case 3:
+        return "⭐️⭐️⭐️";
+        break;
+      case 4:
+        return "⭐️⭐️⭐️⭐️";
+        break;
+      case 5:
+        return "⭐️⭐️⭐️⭐️⭐️";
+        break;
+      case 6:
+        return "⭐️⭐️⭐️⭐️⭐️⭐️⭐";
+        break;
+      case 7:
+        return "⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+        break;
+      case 8:
+        return "⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+        break;
+      case 9:
+        return "⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+        break;
+      case 10:
+        return "⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️";
+        break;
+
+      default:
+        return "Not Rated";
+    }
   }
   const user = localStorage.getItem("_email");
   function onhandleClick(idofprod) {
@@ -106,48 +136,39 @@ function Explore() {
         {retdataa.length > 0 ? (
           retdataa.map(b => {
             return (
-              <div className="cards_explorer">
-                <Card className={classes.root}>
-                  <CardActionArea>
-                    <CardMedia
-                      className={classes.media}
-                      image={
-                        // "/static/images.jpg"
-                        "https://gamerstopbymarcrove.herokuapp.com/" +
-                        stringsplit(b.image)
-                      }
-                      title={b.name}
-                    />
-                    <CardContent>
-                      <Typography
-                        className={classes.fonta}
-                        variant="h6"
-                        component="h6"
-                        color="primary"
+              <div className="tempea">
+                <div className="tempeb">
+                  <CardMedia
+                    className={classes.media}
+                    image={
+                      "https://gamerstopbymarcrove.herokuapp.com/" +
+                      stringsplit(b.image)
+                    }
+                    title={"hello"}
+                  />
+                </div>
+                <div className="tempc">
+                  <div className="tempd">{b.name}</div>
+                  <div className="tempe"> {findrating(b.rating)}</div>
+                  <div className="tempf">
+                    <div className="card_button">
+                      <button onClick={() => onhandleRedirect(b._id)}>
+                        <p style={{color: "white"}}>Buy</p>
+                      </button>
+                    </div>
+                    <div className="card_button">
+                      <button
+                        style={{
+                          backgroundColor: "grey",
+                          border: "1px solid black",
+                        }}
                       >
-                        {b.name}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <CardActions>
-                    <p className="price-show"> {"₹" + b.price}</p>
-
-                    <Button
-                      className={classes.butt}
-                      size="small"
-                      color="primary"
-                      variant="outlined"
-                      onClick={() => onhandleClick(b._id)}
-                      style={{
-                        backgroundColor: "black",
-                        marginLeft: "30px",
-                        color: "white",
-                      }}
-                    >
-                      <p className="buy-btn">Buy</p>
-                    </Button>
-                  </CardActions>
-                </Card>
+                        {" "}
+                        <p style={{color: "white"}}>Add to Cart</p>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           })

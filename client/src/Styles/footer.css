@@ -21,3 +21,11 @@ a {
   margin: 12px;
   display: inline-block;
 }
+@media all and (max-width: 500px) {
+  .footer_elements_outer {
+    /* position: absolute !important;
+    width: 100%;
+    display: grid !important;
+    bottom: 0 !important; */
+  }
+}

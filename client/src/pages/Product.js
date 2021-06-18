@@ -9,7 +9,7 @@ import HashLoader from "react-spinners/HashLoader";
 import MuiAlert from "@material-ui/lab/Alert";
 import {css} from "@emotion/react";
 import Snackbar from "@material-ui/core/Snackbar";
-
+import Reveal from "react-reveal/Reveal";
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -172,32 +172,34 @@ function Product() {
       </Snackbar>
       <Header />
       {isfetched ? (
-        <div className="temp1">
-          <div className="baby-temp1">
-            {
-              <img
-                src={`https://gamerstopbymarcrove.herokuapp.com/${createdata}`}
-                alt={name}
-              />
-            }
+        <Reveal effect="fadeInUp">
+          <div className="temp1">
+            <div className="baby-temp1">
+              {
+                <img
+                  src={`https://gamerstopbymarcrove.herokuapp.com/${createdata}`}
+                  alt={name}
+                />
+              }
+            </div>
+            <div className="baby-temp2 bbytmp">
+              <h1>{name}</h1>
+            </div>
+            <div className="baby-temp3 bbytmp">{"₹" + " " + price}</div>
+            <div className="baby-temp4 bbytmp">{findrating(rating)}</div>
+            <div className="baby-temp5 bbytmp">
+              <button>
+                <p className="temp78">Add to Cart</p>
+              </button>
+            </div>
+            <div className="baby-temp5 bbytmp">
+              {" "}
+              <button>
+                <p className="temp78">Buy Now</p>
+              </button>
+            </div>
           </div>
-          <div className="baby-temp2 bbytmp">
-            <h1>{name}</h1>
-          </div>
-          <div className="baby-temp3 bbytmp">{"₹" + " " + price}</div>
-          <div className="baby-temp4 bbytmp">{findrating(rating)}</div>
-          <div className="baby-temp5 bbytmp">
-            <button>
-              <p className="temp78">Add to Cart</p>
-            </button>
-          </div>
-          <div className="baby-temp5 bbytmp">
-            {" "}
-            <button>
-              <p className="temp78">Buy Now</p>
-            </button>
-          </div>
-        </div>
+        </Reveal>
       ) : (
         //  <div className="cart-body">
         //     <div className="cart-child">
