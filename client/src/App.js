@@ -12,6 +12,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import About from "./components/About";
 import Product from "./pages/Product";
 import MostPurchase from "./components/Most-purchased";
+import Auth from "./pages/Auth";
 function App() {
   const isAdmin = useSelector(state => state.UserInfo.acctype);
 
@@ -31,6 +32,7 @@ function App() {
             path="/admin"
             exact
           />
+          <Route path="/auth" exact component={Auth}></Route>
           <Route path="/temp" component={MostPurchase}></Route>
           <Route path="/about" component={About} />
           <Route path="/cart" exact component={Cart} />

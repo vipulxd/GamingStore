@@ -16,6 +16,10 @@ function Header() {
   const history = useHistory();
 
   const noOfGames = useSelector(state => state.CartInfo.products);
+  function handleRedirect(e) {
+    e.preventDefault();
+    history.push("/admin");
+  }
   useEffect(() => {
     setInterval(
       () =>
@@ -88,7 +92,7 @@ function Header() {
         </>
       ) : (
         <Shake>
-          <Login />
+          <button onClick={handleRedirect}>hello</button>
         </Shake>
       )}
     </div>

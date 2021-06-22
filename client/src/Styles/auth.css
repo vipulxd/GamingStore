@@ -1,0 +1,86 @@
+.auth_a_outer {
+  display: grid;
+  grid-gap: 30px;
+  width: 100%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 70px 500px;
+}
+* {
+  /* border: 1px solid red; */
+}
+/* .top_left {
+  background-color: grey;
+}
+
+.top_right {
+  background-color: black;
+}
+.bottom_left {
+  background-color: blue;
+}
+.bottom_right {
+  background-color: red;
+} */
+.top_left {
+  text-align: right;
+}
+.auth_button button {
+  background-color: grey;
+  border: none;
+  height: 50px;
+  width: 100px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn_tmp {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+}
+
+.log_outer {
+  display: grid;
+  color: white;
+  grid-template-columns: 30% 50%;
+  grid-template-rows: 50px 50px 50px 50px;
+  justify-content: space-around;
+  height: 400px;
+}
+.span2 {
+  grid-column: span 2;
+}
+.span3 {
+  grid-row: span 2;
+}
+.log_outer {
+  background-color: grey;
+  border-bottom-right-radius: 40px;
+  border-top-right-radius: 40px;
+  justify-content: center;
+  grid-gap: 10px;
+}
+.reg {
+  border-bottom-left-radius: 40px !important;
+  border-top-left-radius: 40px !important;
+  grid-template-rows: 50px 50px 50px 50px 50px !important	;
+}
+.log_inner {
+  font-weight: 700;
+  font-size: 1rem;
+  justify-content: center;
+  color: white;
+}
+.log_inner input {
+  height: 30px;
+  width: 100%;
+}
+.log_inner input::placeholder {
+  color: black;
+}
+.log_inner button {
+  border: none;
+  background-color: black;
+  height: 40%;
+  width: 30%;
+  border-radius: 10px;
+}

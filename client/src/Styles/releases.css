@@ -38,6 +38,9 @@
     font-size: 0.6rem;
     height: 200px !important;
   }
+  .card_button button {
+    width: 105px !important;
+  }
   .tempea {
     font-size: 0.6rem;
     height: 200px !important;
