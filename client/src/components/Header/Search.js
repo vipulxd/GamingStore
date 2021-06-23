@@ -1,7 +1,7 @@
 import {React, useState} from "react";
 import {useSelector} from "react-redux";
 import "../../Styles/header-temp.css";
-import "../../Styles/search.css";
+// import "../../Styles/search.css";
 import CardMedia from "@material-ui/core/CardMedia";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
 import {useHistory} from "react-router-dom";
@@ -12,9 +12,9 @@ function Alert(props) {
 }
 const useStyles = makeStyles(theme => ({
   cover: {
-    width: 400,
-    height: 100,
-    borderRadius: 100,
+    width: "300px",
+    height: "50px",
+    borderRadius: 50,
   },
 }));
 
@@ -72,7 +72,14 @@ function Search() {
             }
           >
             <div className="child_search">
-              <div className="child_search">
+              <div
+                className="child"
+                onClick={() =>
+                  user
+                    ? history.push(`/product/${foundprod._id}`)
+                    : setOpen(true)
+                }
+              >
                 <CardMedia
                   className={classes.cover}
                   image={
@@ -82,11 +89,14 @@ function Search() {
                   title="Live from space album cover"
                 />
               </div>
-              <div className="child_elements">{foundprod.name} </div>
-              <div className="child_elements">
-                {"     " + "₹" + foundprod.price}
+              <div className="child_temp">
+                <div className="child_elements child">{foundprod.name} </div>
+                <div className="child_elements child">
+                  {"     " + "₹" + foundprod.price}
+                </div>
               </div>
             </div>
+            //{" "}
           </div>
         )}
       </div>

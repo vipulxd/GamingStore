@@ -6,8 +6,6 @@
 
 .cart-child {
   flex: 1;
-
-  /* text-align: center; */
 }
 .cart-child {
   margin: 20px;
@@ -40,17 +38,18 @@
 .temp1 {
   display: grid;
   height: 350px;
-  margin: 40px;
+  margin: 20px;
   padding: 40px;
   border-radius: 30px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.425);
   grid-template-columns: 600px 200px 200px;
   grid-template-rows: 50px;
-  justify-content: center;
+
+  grid-gap: 30px;
 }
 .baby-temp1 {
   grid-row: span 4;
-  /* display: flex; */
+
   padding: 10px;
 }
 .baby-temp1 img {
@@ -71,7 +70,6 @@
 .bbytmp {
   justify-content: center;
   padding: 10px;
-  /* background-color: black; */
 }
 .baby-temp5 {
   height: 10px;
@@ -84,6 +82,7 @@
   border: none;
 }
 .temp78 {
+  font-weight: 600;
   padding: 8px;
   color: white;
 }

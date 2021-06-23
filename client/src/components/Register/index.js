@@ -1,32 +1,78 @@
-import React from "react";
+import {React, useState} from "react";
+import axios from "axios";
+import {useHistory} from "react-router-dom";
 import "../../Styles/auth.css";
-function index() {
+
+function Register() {
+  const history = useHistory();
+  const [details, setdetails] = useState({
+    name: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
+  console.log(details);
+  function onSubmit(e) {
+    e.preventDefault();
+    axios
+      .post("http://localhost:9000/api/log/register", details)
+      .then(res => {
+        console.log(res);
+        window.location.reload();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+  function handleClick(e) {
+    setdetails({
+      ...details,
+      [e.target.name]: e.target.value,
+    });
+  }
+
   return (
     <div className="log_outer reg">
       <div className="log_inner span2"></div>
       <div className="log_inner">Name</div>
       <div className="log_inner">
-        <input placeholder="Enter Name"></input>
+        <input
+          placeholder="Enter Name"
+          name="name"
+          onChange={handleClick}
+        ></input>
       </div>
       <div className="log_inner">Email</div>
       <div className="log_inner">
-        <input placeholder="Enter your email"></input>
+        <input
+          placeholder="Enter your email"
+          name="email"
+          onChange={handleClick}
+        ></input>
       </div>
       <div className="log_inner">Password</div>
       <div className="log_inner">
         <div className="log_inner">
-          <input placeholder="Enter your password"></input>
+          <input
+            placeholder="Enter your password"
+            name="password"
+            onChange={handleClick}
+          ></input>
         </div>
       </div>
       <div className="log_inner"> Re-enter Password</div>
       <div className="log_inner">
         <div className="log_inner">
-          <input placeholder="Re-enter your password"></input>
+          <input
+            placeholder="Re-enter your password"
+            name="password2"
+            onChange={handleClick}
+          ></input>
         </div>
       </div>
       <div className="log_inner"></div>
       <div className="log_inner">
-        <button>
+        <button onClick={onSubmit}>
           <p style={{color: "white", fontWeight: "600"}}>Register</p>
         </button>
       </div>
@@ -34,4 +80,4 @@ function index() {
   );
 }
 
-export default index;
+export default Register;

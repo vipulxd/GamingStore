@@ -1,5 +1,4 @@
 .outer-box {
-  /* margin-top: 60px; */
   width: 100%;
 
   font-weight: 1000;
@@ -7,7 +6,7 @@
 }
 
 .cards_releases {
-  margin: 20px;
+  margin: 10px;
   transition: transform 0.4s ease-out;
 }
 
@@ -16,10 +15,10 @@
   transform: scale(1.1);
 }
 .card_outer_releases {
-  justify-content: space-evenly;
   display: flex;
-  padding: 20px;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding: 0px;
+
   overflow-y: hidden;
   overflow-x: scroll;
 }
@@ -46,54 +45,14 @@
     height: 200px !important;
   }
 }
-/*
-  .MuiCard-root {
-    height: 150px !important;
-    width: 150px !important;
-  }
-  .MuiCardContent-root {
-    padding: 0px !important;
-  }
-  .makeStyles-fonta-4 {
-    color: black !important;
-    height: 30px !important;
-    font-size: 1rem !important;
-    text-align: center !important;
-    font-weight: normal !important;
-  }
-  */
+
 .heading_log {
   font-size: 1.8rem !important;
   text-align: left;
 
   margin: 50px 0px 0px 10px !important;
 }
-/*
-  .price-show {
-    font-size: 1rem !important;
-    font-weight: bold;
-    color: black !important;
-  }
-  .cards_releases {
-    margin: 0px 7px;
-    /* pointer-events: none; */
-/* } */
 
-/* .MuiButton-label {
-    height: 10px !important;
-  }
-  .MuiCardActions-spacing {
-    padding: 0px !important;
-    margin: 2px;
-  }
-  .MuiTypography-h6 {
-    font-weight: lighter !important;
-    height: 20px !important;
-    margin: 2px !important ;
-    font-size: 0.8rem !important;
-    font-weight: bold !important;
-  }
-} */
 */ .who {
   display: grid !important;
   height: 400px;

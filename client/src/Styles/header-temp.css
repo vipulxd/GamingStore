@@ -13,6 +13,9 @@
   justify-content: space-around;
 }
 .header_input {
+  outline: 0 white;
+}
+.header_input {
   justify-content: center;
   align-items: center;
   margin-top: 0px;
@@ -60,6 +63,11 @@
 .cart-of-header:hover {
   cursor: pointer;
 }
+.login_btn {
+  height: 40px;
+  font-size: 1rem;
+  width: 50px;
+}
 
 @media all and (max-width: 500px) {
   .title_heading a {
@@ -78,19 +86,23 @@
     display: flex !important;
     width: 300px !important;
   }
-  .child_elements {
-    width: 400px !important;
-    margin-left: 20px !important;
-  }
-  .child_elements:last-child {
-    display: none !important;
+  .child_temp {
+    position: absolute !important;
+    right: 0;
+    display: grid !important;
+    grid-template-columns: 100px 100px !important;
+    bottom: 0;
+    width: 100%;
+    font-weight: 600;
+
+    font-size: 2rem;
   }
   .makeStyles-cover-1 {
     width: 100% !important;
   }
   .header_input {
     border: 3px solid black;
-    margin-left: 10px;
+    margin-left: 0px;
   }
   .title_heading {
     display: block;
@@ -114,5 +126,12 @@
   }
   .card_outer_explorer {
     height: 250px !important;
+  }
+  .title_heading {
+    display: block;
+    width: 100%;
+  }
+  .login_button {
+    display: none;
   }
 }

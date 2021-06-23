@@ -13,7 +13,7 @@ router.post("/checkout", async (req, res) => {
   try {
     const payments = await stripe.paymentIntents.create({
       amount,
-      currency: "INR",
+      currency: "inr",
       description: "Gamer's Stop Keep Gaming",
       payment_method: id,
       confirm: true,

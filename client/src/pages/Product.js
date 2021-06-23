@@ -1,46 +1,26 @@
 import {useState, useEffect, React} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 import axios from "axios";
 import "../Styles/product-cart.css";
 import Header from "../components/Header/index";
 import Skeleton, {SkeletonTheme} from "react-loading-skeleton";
 import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
-import HashLoader from "react-spinners/HashLoader";
+
 import MuiAlert from "@material-ui/lab/Alert";
 import {css} from "@emotion/react";
 import Snackbar from "@material-ui/core/Snackbar";
 import Reveal from "react-reveal/Reveal";
+import {useSelector} from "react-redux";
+import {sum_add} from "../redux/Purchase/purchaseAction";
+import {useDispatch} from "react-redux";
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
-const override = css`
-  loading: true;
-  color: "#000000";
-  css: "";
-  speedmultiplier: 1;
-`;
-
-const CARD_OPTIONS = {
-  iconStyle: "solid",
-  style: {
-    base: {
-      iconColor: "#c4f0ff",
-      color: "black",
-      fontWeight: 500,
-      fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
-      fontSize: "16px",
-      fontSmoothing: "antialiased",
-      ":-webkit-autofill": {color: "#fce883"},
-      "::placeholder": {color: "#87bbfd"},
-    },
-    invalid: {
-      iconColor: "#ffc7ee",
-      color: "#ffc7ee",
-    },
-  },
-};
 
 function Product() {
+  const dispatch = useDispatch();
+  const authenticated = useSelector(state => state.UserInfo.authenticated);
+  const history = useHistory();
   const [loadinga, setLoading] = useState(true);
 
   const {prod_id} = useParams();
@@ -123,7 +103,7 @@ function Product() {
         const response = await axios.post(
           "https://gamerstopbymarcrove.herokuapp.com/api/pay/checkout",
           {
-            amount: Math.ceil(price),
+            amount: Math.ceil(200),
             id,
           }
         );
@@ -153,6 +133,15 @@ function Product() {
     setOpen(false);
   };
 
+  function handleRedirect() {
+    if (authenticated) {
+      console.log(price);
+      dispatch(sum_add(price));
+      history.push("/payment");
+    } else {
+      history.push("/auth");
+    }
+  }
   function setloading() {
     setload(true);
   }
@@ -188,52 +177,19 @@ function Product() {
             <div className="baby-temp3 bbytmp">{"₹" + " " + price}</div>
             <div className="baby-temp4 bbytmp">{findrating(rating)}</div>
             <div className="baby-temp5 bbytmp">
-              <button>
+              <button onClick={() => handleRedirect(price)}>
                 <p className="temp78">Add to Cart</p>
               </button>
             </div>
             <div className="baby-temp5 bbytmp">
               {" "}
-              <button>
+              <button onClick={handleRedirect}>
                 <p className="temp78">Buy Now</p>
               </button>
             </div>
           </div>
         </Reveal>
       ) : (
-        //  <div className="cart-body">
-        //     <div className="cart-child">
-        //       <img
-        //         src={`https://gamerstopbymarcrove.herokuapp.com/${createdata}`}
-        //         alt={name}
-        //       />
-        //     </div>
-        //     <div className="cart-child">
-        //       <h1 className="cartele">{name}</h1>
-        //       <h4 className="cartele">₹ {price} </h4>
-        //       <h4 className="cartele">{findrating(rating)}</h4>
-
-        //       <form onSubmit={handleSubmit}>
-        //         <fieldset className="FormGroup">
-        //           <div className="FormRow">
-        //             {/* <CardElement options={CARD_OPTIONS} /> */}
-        //           </div>
-        //         </fieldset>
-        //         <button className="buy-button" onClick={setloading}>
-        //           {loading ? (
-        //             <HashLoader
-        //               color={"#ffffff"}
-        //               loading={loadinga}
-        //               css={override}
-        //               size={35}
-        //             />
-        //           ) : (
-        //             <p>Buy Now</p>
-        //           )}
-        //         </button>
-        //       </form>
-        //     </div>
-        //   </div>
         <div className="cart-child" style={{fontSize: 50, lineHeight: 1.1}}>
           <SkeletonTheme color="#202020" highlightColor="black">
             <p>

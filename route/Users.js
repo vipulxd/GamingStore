@@ -11,7 +11,7 @@ const User = require("../model/user");
 router.post("/register", (req, res) => {
   const {errors, isValid} = validateRegisterInput(req.body);
   if (!isValid) {
-    return res.status(400).json(errors);
+    return res.status(404);
   }
 
   User.findOne({
@@ -79,7 +79,7 @@ router.post("/login", (req, res) => {
           }
         );
       } else {
-        return res.status(400).json({passwordincorrect: "Password incorrect"});
+        return res.status(400).json({error_message: "Password incorrect"});
       }
     });
   });

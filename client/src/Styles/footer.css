@@ -5,8 +5,7 @@
   text-decoration: none;
   font-family: serif;
   background-color: black;
-  /* min-height: 150px; */
-  /* padding: 10px; */
+
   display: flex;
   bottom: 0;
   flex-direction: row;
@@ -23,9 +22,5 @@ a {
 }
 @media all and (max-width: 500px) {
   .footer_elements_outer {
-    /* position: absolute !important;
-    width: 100%;
-    display: grid !important;
-    bottom: 0 !important; */
   }
 }

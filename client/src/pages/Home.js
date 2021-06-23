@@ -5,7 +5,7 @@ import Footer from "../components/Footer/index";
 import Releases from "../components/releases/Releases";
 import Explore from "../components/explore/Explore";
 import Fade from "react-reveal";
-// import News from "../components/news/index";
+
 import "../Styles/App.css";
 import axios from "axios";
 import {add_prod_name} from "../redux/Products/Actions";
@@ -36,19 +36,16 @@ function Home() {
         <div className="header-outer">
           <Header />
         </div>
-        {/* <div className="news-outer">
-          <News />
-        </div> */}
+
         <div className="main_div_releases">
           <Releases />
         </div>
         <div className="main_div_explore">
           <Explore />
         </div>
-
-        <div className="footer_outer">
-          <Footer />
-        </div>
+      </div>
+      <div className="footer_outer">
+        <Footer />
       </div>
     </div>
   );

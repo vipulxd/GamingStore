@@ -7,12 +7,7 @@
 .header_outer {
   display: flex;
 }
-/* .header_input {
-  height: 30px;
-  width: 30rem;
-  border-radius: 3px;
-  border-color: rgb(80, 151, 233);
-} */
+
 .header_logger {
   color: rgb(80, 151, 233);
   font-size: 1.3rem;
@@ -20,9 +15,7 @@
   display: flex;
   margin: auto !important;
 }
-/* input {
-  font-size: 1.3rem;
-} */
+
 ::placeholder {
   color: black;
 

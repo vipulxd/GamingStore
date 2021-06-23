@@ -2,24 +2,34 @@ import {React, useState, useEffect} from "react";
 import "../../Styles/header-temp.css";
 import {NavLink, useHistory} from "react-router-dom";
 import Search from "./Search";
-import Login from "../Loggers/Login";
 import Button from "@material-ui/core/Button";
-import Logout from "../Loggers/Logout";
-import {useSelector} from "react-redux";
+
+import {useSelector, useDispatch} from "react-redux";
 import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Shake from "react-reveal/Shake";
 import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
+import {addUser, removeUser} from "../../redux/User/UserAction";
 function Header() {
-  const _user = localStorage.getItem("_user_name");
-  const _mail = localStorage.getItem("_email");
+  const dispatch = useDispatch();
+
   const [count, setcount] = useState(0);
   const history = useHistory();
 
   const noOfGames = useSelector(state => state.CartInfo.products);
-  function handleRedirect(e) {
-    e.preventDefault();
-    history.push("/admin");
+  const Logged = useSelector(state => state.UserInfo.authenticated);
+  const acctype = useSelector(state => state.UserInfo.acctype);
+  function handleRedirect() {
+    history.push("/auth");
   }
+  console.log(acctype);
+  function handleLogout() {
+    localStorage.removeItem("token");
+    dispatch(removeUser());
+    history.push("/");
+    window.location.reload();
+  }
+
   useEffect(() => {
     setInterval(
       () =>
@@ -53,46 +63,64 @@ function Header() {
               marginTop: "0px",
             }}
           >
-            <ShoppingCartRoundedIcon style={{color: "white"}} />
+            <ShoppingCartRoundedIcon
+              style={{color: "white", marginRight: "5px"}}
+            />
             <p className="cartnos"> Cart </p>
             <span className="cartnos">
-              {_mail && noOfGames.length ? noOfGames.length : null}
+              {Logged && noOfGames.length ? noOfGames.length : null}
             </span>
           </Button>
         </NavLink>
       </div>
 
-      {_user ? (
-        <>
-          {" "}
-          {_mail === "vipul.xtr@gmail.com" ? (
-            <div className="admin_butt elementtop">
-              <NavLink to="/admin">
-                <span>
-                  {" "}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className="header_log_btn elementtop"
-                    style={{
-                      backgroundColor: "black",
-                    }}
-                  >
-                    <p className="cartnos">Admin Panel</p>
-                  </Button>
-                </span>
-              </NavLink>
-            </div>
-          ) : (
-            <></>
-          )}
-          <div className="header_log_btn">
-            <Logout />
-          </div>
-        </>
+      {acctype === "admin" ? (
+        <Button
+          variant="contained"
+          color="primary"
+          className="header_log_btn elementtop"
+          onClick={() => history.push("/admin")}
+          style={{
+            backgroundColor: "grey",
+            marginTop: "0px",
+          }}
+        >
+          <AccountCircleIcon style={{color: "white", marginRight: "10px"}} />
+          <p className="cartnos"> Admin Pannel </p>
+        </Button>
+      ) : (
+        <></>
+      )}
+
+      {Logged ? (
+        <Button
+          variant="contained"
+          color="primary"
+          className="header_log_btn elementtop"
+          onClick={handleLogout}
+          style={{
+            backgroundColor: "grey",
+            marginTop: "0px",
+          }}
+        >
+          <AccountCircleIcon style={{color: "white", marginRight: "5px"}} />
+          <p className="cartnos"> Logout </p>
+        </Button>
       ) : (
         <Shake>
-          <button onClick={handleRedirect}>hello</button>
+          <Button
+            variant="contained"
+            color="primary"
+            className="header_log_btn elementtop"
+            onClick={handleRedirect}
+            style={{
+              backgroundColor: "grey",
+              marginTop: "0px",
+            }}
+          >
+            <AccountCircleIcon style={{color: "white", marginRight: "5px"}} />
+            <p className="cartnos"> Login </p>
+          </Button>
         </Shake>
       )}
     </div>

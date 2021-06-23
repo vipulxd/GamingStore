@@ -1,0 +1,69 @@
+* {
+  /* border: 1px solid white; */
+}
+.form_body {
+}
+.form_outer {
+  background-color: rgba(255, 255, 255, 0.63);
+  margin: 0 auto;
+  min-height: 350px;
+  width: 70%;
+  border-radius: 10px;
+}
+.f_outer {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 50% 40%;
+  grid-template-rows: 40px 40px 40px 40px 40px;
+  grid-gap: 30px;
+  margin: 20px;
+  justify-content: left;
+}
+.child0 {
+  grid-column: span 2;
+}
+.f_inner {
+  font-weight: 900;
+  display: grid;
+  grid-template-columns: 30% 60%;
+}
+.child6 {
+  grid-column: span 2;
+  grid-row: span 3;
+}
+.f_inner input {
+  background-color: rgba(255, 255, 255, 0.199);
+  height: 70%;
+  width: 100%;
+  outline: none;
+  font-weight: 600;
+  font-size: 1.2vw;
+}
+.inner_name {
+  display: flex;
+
+  align-items: center;
+}
+.child9 {
+  grid-column: span 1;
+}
+.but_btnn {
+  background-color: black;
+  height: 40px;
+  width: 20%;
+  border-radius: 4px;
+  border: none;
+}
+.child9 {
+  display: block;
+}
+.child10 {
+  height: 40px;
+  display: block;
+  border: 1px solid grey;
+}
+.buybtnnn {
+  color: white;
+  font-size: 1.2vw;
+  font-weight: bolder;
+}

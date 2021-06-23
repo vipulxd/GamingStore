@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import {React, useState, useEffect} from "react";
 import Fade from "react-reveal/Fade";
 import Header from "../components/Header";
 import LoginComp from "../components/Login";
@@ -15,6 +15,9 @@ function Auth() {
     setlog(false);
     setreg(true);
   }
+  useEffect(() => {
+    setlog(true);
+  }, []);
   return (
     <div>
       <Header />

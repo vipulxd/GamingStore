@@ -1,14 +1,10 @@
-import {ADD_USER, USER_TYPE} from "./UserActionTypes";
+import {ADD_USER, USER_TYPE, RM_USER} from "./UserActionTypes";
 
-const user_logged = localStorage.getItem("_email");
-if (user_logged === "vipul.xtr@gmail.com") {
-  var acc_type = "Admin";
-} else {
-  acc_type = "_regular_user";
-}
 const initialState = {
-  user: user_logged,
-  acctype: acc_type,
+  user: null,
+  authenticated: false,
+  id: null,
+  acctype: "regular_user",
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -16,12 +12,18 @@ const UserReducer = (state = initialState, action) => {
     case ADD_USER:
       return {
         ...state,
-        user: action.payload,
+        user: action.payload.name,
+        id: action.payload.id,
+        authenticated: true,
+      };
+    case RM_USER:
+      return {
+        authenticated: false,
       };
     case USER_TYPE:
       return {
         ...state,
-        acctype: action.payload,
+        acctype: "admin",
       };
     default:
       return state;

@@ -5,32 +5,18 @@
   grid-template-columns: 50% 50%;
   grid-template-rows: 70px 500px;
 }
-* {
-  /* border: 1px solid red; */
-}
-/* .top_left {
-  background-color: grey;
-}
 
-.top_right {
-  background-color: black;
-}
-.bottom_left {
-  background-color: blue;
-}
-.bottom_right {
-  background-color: red;
-} */
 .top_left {
   text-align: right;
 }
 .auth_button button {
   background-color: grey;
   border: none;
-  height: 50px;
+  height: 40px;
   width: 100px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 2px;
+  outline: 1px ridge black;
 }
 .btn_tmp {
   font-size: 1.2rem;
@@ -57,9 +43,10 @@
   border-bottom-right-radius: 40px;
   border-top-right-radius: 40px;
   justify-content: center;
-  grid-gap: 10px;
+  grid-gap: 1px;
 }
 .reg {
+  outline: 5px ridge black;
   border-bottom-left-radius: 40px !important;
   border-top-left-radius: 40px !important;
   grid-template-rows: 50px 50px 50px 50px 50px !important	;
@@ -71,16 +58,24 @@
   color: white;
 }
 .log_inner input {
-  height: 30px;
+  cursor: none;
+  height: 30%;
   width: 100%;
+  outline: 3px ridge black;
+  font-weight: 800;
+  background-color: rgba(128, 128, 128, 0.295);
+  font-size: 1.2vw;
 }
 .log_inner input::placeholder {
   color: black;
+  text-align: left;
+  font-weight: 800;
 }
 .log_inner button {
   border: none;
   background-color: black;
-  height: 40%;
+  height: 30%;
   width: 30%;
   border-radius: 10px;
+  outline: 2px ridge white;
 }

@@ -1,7 +1,7 @@
 import {React, useEffect, useState} from "react";
 import Header from "../components/Header/index";
 import Footer from "../components/Footer/index";
-import ItemCart from "../components/Cart/Cart";
+// import ItemCart from "../components/Cart/Cart";
 import axios from "axios";
 import "../Styles/cart.css";
 function Cart() {
@@ -25,7 +25,8 @@ function Cart() {
     <div className="cartouter">
       <Header />
       {is_user_logged ? (
-        <ItemCart />
+        // <ItemCart />
+        <div></div>
       ) : (
         <div className="_cart_body">
           <p>plz log in</p>

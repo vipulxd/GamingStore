@@ -5,14 +5,10 @@
   font-size: 1.6vw;
 }
 .card_outer_explorer {
-  /* padding: 10px; */
-  /* margin: 0 10px 10px 10px;
-  margin-top: 10px !important; */
   display: flex;
   height: 400px;
   overflow-y: hidden;
   overflow-x: scroll;
-  /* padding: 10px; */
 }
 .buy-btn {
   color: white;
@@ -34,29 +30,7 @@ button {
   margin: 21px 2px 2px 1px;
   font-size: 3vw;
 }
-/* @media all and (max-width: 500px) {
-  .makeStyles-root-5 {
-    height: 155px !important;
-  }
-  .MuiButton-outlined {
-    margin-left: 20px !important;
-  }
-  .price-show {
-    font-size: 1rem !important;
-    font-weight: lighter !important;
-    color: black !important;
-  }
-  .makeStyles-fonta-7 {
-    color: black !important;
-    height: 20px !important;
-    font-size: 1rem !important;
-    text-align: center !important;
-    font-weight: normal !important;
-  }
-  .card_outer_explorer {
-    height: auto !important;
-  }
-} */
+
 .tempea {
   height: 300px;
   position: relative;

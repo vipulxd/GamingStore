@@ -1,6 +1,6 @@
 * {
   margin: 0px;
-  /* border: 1px solid white; */
+
   font-family: Roboto, sans-serif !important;
 }
 .scrollbar-hidden::-webkit-scrollbar {
@@ -24,7 +24,7 @@ html {
   box-sizing: border-box;
 }
 .main_body {
-  min-height: 1000px;
+  min-height: 90px;
   margin-top: 10px;
 }
 
@@ -46,26 +46,3 @@ html {
     min-height: 100px;
   }
 }
-
-/* .news-outer {
-    display: none !important;
-  }
-  .header_outer {
-    display: grid !important;
-    grid-template-columns: auto !important;
-    width: 100%;
-  }
-} */
-
-/* @media (prefers-color-scheme: dark) {
-  body {
-    background-color: #1c1c1e;
-    color: #fefefe;
-  }
-  a {
-    color: #5fa9ee;
-  }
-  img {
-    filter: grayscale((20%));
-  }
-} */
