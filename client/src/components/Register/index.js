@@ -15,11 +15,16 @@ function Register() {
   function onSubmit(e) {
     e.preventDefault();
     axios
-      .post("http://localhost:9000/api/log/register", details)
+      .post(
+        "https://gamerstopbymarcrove.herokuapp.com/api/log/register",
+        details
+      )
       .then(res => {
         window.location.reload();
       })
-      .catch(error => {});
+      .catch(error => {
+        console.log(error);
+      });
   }
   function handleClick(e) {
     setdetails({
