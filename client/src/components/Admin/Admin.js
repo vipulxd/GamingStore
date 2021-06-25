@@ -42,7 +42,7 @@ function Admin() {
         setOpen(true);
       })
       .catch(error => {
-        console.log(error);
+        setmessage("Server Error");
       });
   }
   const handleClose = (event, reason) => {
@@ -59,7 +59,6 @@ function Admin() {
   const handleChange = e => {
     setgame({...game, [e.target.name]: e.target.value});
   };
-  console.log(game);
 
   return (
     <div>

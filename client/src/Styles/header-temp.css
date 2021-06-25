@@ -3,14 +3,13 @@
   align-items: center;
   width: 95%;
 
-  justify-content: space-evenly;
   z-index: 1;
   padding: 0.1rem 1.5rem;
 }
 
 .header-outer {
   justify-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .header_input {
   outline: 0 white;

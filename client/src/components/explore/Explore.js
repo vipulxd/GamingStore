@@ -3,17 +3,14 @@ import "../../Styles/explore.css";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
 import {makeStyles} from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
+
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import Skeleton, {SkeletonTheme} from "react-loading-skeleton";
-
+import {addprod} from "../../redux/";
+import {useDispatch} from "react-redux";
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -34,6 +31,7 @@ const useStyles = makeStyles({
 });
 
 function Explore() {
+  const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -83,6 +81,10 @@ function Explore() {
         return "Not Rated";
     }
   }
+  function addState(a) {
+    dispatch(addprod(a));
+    setOpen(true);
+  }
   const user = localStorage.getItem("_email");
   function onhandleClick(idofprod) {
     if (user) {
@@ -95,7 +97,6 @@ function Explore() {
 
   const onhandleRedirect = idofprod => history.push("/product/" + idofprod);
   function stringsplit(str) {
-    console.log(str.split("/")[1]);
     return str.split("/")[1];
   }
   const handleClick = () => {
@@ -115,19 +116,12 @@ function Explore() {
 
   return (
     <div className="outer-box">
-      {user ? (
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="success">
-            Added to Cart
-          </Alert>
-        </Snackbar>
-      ) : (
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="error">
-            Please Login First
-          </Alert>
-        </Snackbar>
-      )}
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          Added to Cart
+        </Alert>
+      </Snackbar>
+
       <p className="heading_log" style={{color: "whitesmoke"}}>
         Explore more in Store
       </p>
@@ -152,7 +146,10 @@ function Explore() {
                   <div className="tempe"> {findrating(b.rating)}</div>
                   <div className="tempf">
                     <div className="card_button">
-                      <button onClick={() => onhandleRedirect(b._id)}>
+                      <button
+                        style={{cursor: "pointer"}}
+                        onClick={() => onhandleRedirect(b._id)}
+                      >
                         <p style={{color: "white"}}>Buy</p>
                       </button>
                     </div>
@@ -161,7 +158,9 @@ function Explore() {
                         style={{
                           backgroundColor: "grey",
                           border: "1px solid black",
+                          cursor: "pointer",
                         }}
+                        onClick={() => addState(b)}
                       >
                         {" "}
                         <p style={{color: "white"}}>Add to Cart</p>

@@ -1,4 +1,4 @@
-import {React, useState, useEffect, useLayoutEffect} from "react";
+import {React, useState, useEffect} from "react";
 import "../../Styles/releases.css";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
@@ -10,6 +10,8 @@ import Fade from "react-reveal";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import Skeleton, {SkeletonTheme} from "react-loading-skeleton";
+import {useDispatch} from "react-redux";
+import {addprod} from "../../redux/";
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -43,7 +45,7 @@ const useStylesa = makeStyles(theme => ({
 
 function Releases() {
   const history = useHistory();
-
+  const dispatch = useDispatch();
   const classesa = useStylesa();
   const [open, setOpen] = useState(false);
 
@@ -106,6 +108,10 @@ function Releases() {
     }
     // dispatch(addprod(idofprod));
   }
+  function addState(a) {
+    dispatch(addprod(a));
+    setOpen(true);
+  }
   const onhandleRedirect = idofprod => history.push("/product/" + idofprod);
   const handleClick = () => {
     setOpen(true);
@@ -124,23 +130,15 @@ function Releases() {
   useEffect(() => {
     fetchdata();
   }, []);
-  console.log(retdata);
+
   return (
     <div className="outer-box">
       <div className={classesa.root}>
-        {user ? (
-          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="success">
-              Added to Cart
-            </Alert>
-          </Snackbar>
-        ) : (
-          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="error">
-              Please Login First
-            </Alert>
-          </Snackbar>
-        )}
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success">
+            Added to Cart
+          </Alert>
+        </Snackbar>
       </div>
 
       <div className="releases-outer">
@@ -171,12 +169,18 @@ function Releases() {
                       <div className="tempe"> {findrating(a.rating)}</div>
                       <div className="tempf">
                         <div className="card_button">
-                          <button onClick={() => onhandleRedirect(a._id)}>
+                          <button
+                            style={{cursor: "pointer"}}
+                            onClick={() => onhandleRedirect(a._id)}
+                          >
                             <p style={{color: "white"}}>Buy</p>
                           </button>
                         </div>
                         <div className="card_button">
-                          <button>
+                          <button
+                            style={{cursor: "pointer"}}
+                            onClick={() => addState(a)}
+                          >
                             {" "}
                             <p style={{color: "white"}}> Add to Cart</p>
                           </button>

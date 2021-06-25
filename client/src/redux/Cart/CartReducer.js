@@ -10,6 +10,10 @@ const CartReducer = (state = initialState, action) => {
         ...state,
         products: [...state.products, action.payload],
       };
+    case DEL_PROD:
+      return {
+        ...state,
+      };
     default:
       return state;
   }

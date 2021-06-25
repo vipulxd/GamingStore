@@ -40,7 +40,7 @@ function Search() {
       setfoundproduct();
     }
   }
-  console.log(foundprod);
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;

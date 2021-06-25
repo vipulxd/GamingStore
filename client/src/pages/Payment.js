@@ -1,14 +1,21 @@
 import {React, useState} from "react";
 import Header from "../components/Header";
+import {useHistory} from "react-router-dom";
 import "../Styles/payment.css";
 import axios from "axios";
 import {CardElement, useStripe, useElements} from "@stripe/react-stripe-js";
 import {useSelector} from "react-redux";
 import SyncLoader from "react-spinners/SyncLoader";
 import emailjs from "emailjs-com";
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
 function Payment() {
+  const redirect = useHistory();
+  const [message, setmessage] = useState();
+  const [open, setOpen] = useState();
+  const [error, seterror] = useState(false);
   const [details, setdetails] = useState({
-    user_name: "",
+    name: "",
     address: "",
     email: "",
     pincode: "",
@@ -18,13 +25,37 @@ function Payment() {
     width: "10px",
   };
   const [loading, setloading] = useState(false);
-  console.log(details.email);
+
   let price = useSelector(state => state.BuyInfo.previous_sum);
-  price = parseFloat(price.replace(/,/g, ""));
+
   const stripe = useStripe();
   const elements = useElements();
+
+  const createOptions = () => {
+    return {
+      style: {
+        base: {
+          fontSize: "30px",
+          color: "#424770",
+          fontFamily: "Open Sans, sans-serif",
+          letterSpacing: "0.025em",
+          "::placeholder": {
+            color: "#aab7c4",
+          },
+        },
+        invalid: {
+          color: "blue",
+        },
+      },
+    };
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
+    price = price.toString();
+    if (price.includes(",")) {
+      price = parseFloat(price.replace(/,/g, ""));
+    }
 
     const {error, paymentMethod} = await stripe.createPaymentMethod({
       type: "card",
@@ -41,18 +72,28 @@ function Payment() {
             id,
           }
         );
-        console.log(response);
+
         if (response.data.status == "success") {
+          setmessage(response.data.status);
+          setOpen(true);
           sendMail();
+          redirect.push("/");
         } else {
+          setmessage("Payment Failed");
+          seterror(true);
+          setloading(false);
         }
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     } else {
     }
   };
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
 
+    setOpen(false);
+  };
   function sendMail() {
     emailjs
       .send(
@@ -63,11 +104,9 @@ function Payment() {
       )
       .then(
         response => {
-          console.log(response);
           setloading(false);
         },
         err => {
-          console.log(err);
           setloading(false);
         }
       );
@@ -77,6 +116,16 @@ function Payment() {
   }
   return (
     <div>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          {message}
+        </Alert>
+      </Snackbar>
+      <Snackbar open={error} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error">
+          {message}
+        </Alert>
+      </Snackbar>
       <div>
         <Header />
       </div>
@@ -93,7 +142,8 @@ function Payment() {
               <div className="inner_name_inp">
                 <input
                   type="text"
-                  name="user_name"
+                  name="name"
+                  placeholder="John"
                   onChange={handleChange}
                 ></input>
               </div>
@@ -103,6 +153,7 @@ function Payment() {
               <div className="inner_name_inp">
                 <input
                   type="text"
+                  placeholder="A 1/10 St. Xy Campus"
                   name="address"
                   onChange={handleChange}
                 ></input>
@@ -114,6 +165,7 @@ function Payment() {
                 <input
                   type="email"
                   name="email"
+                  placeholder="john123@jonny.com"
                   onChange={handleChange}
                 ></input>
               </div>
@@ -122,6 +174,7 @@ function Payment() {
               <div className="inner_name">PINCODE</div>
               <div className="inner_name_inp">
                 <input
+                  placeholder="909090"
                   type="pincode"
                   name="pincode"
                   onChange={handleChange}
@@ -138,8 +191,8 @@ function Payment() {
             </div>
             <div className="f_inner child6"></div>
             <div className="f_inner child10">
-              <form className="chi" style={{width: "100%", height: "100%"}}>
-                <CardElement />
+              <form className="chi" style={{width: "100%"}}>
+                <CardElement {...createOptions()} />
               </form>
             </div>
             <div className="f_inner child9">

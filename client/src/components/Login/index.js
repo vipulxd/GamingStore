@@ -46,7 +46,7 @@ function LoginComp() {
 
     const token = a.data.token;
     const decode = jwtDecode(token);
-    console.log(decode);
+
     dispatch(addUser(decode));
     if (decode.id === "60d2213b9edf96191531a809") {
       dispatch(userType());
@@ -61,7 +61,7 @@ function LoginComp() {
       [e.target.name]: e.target.value,
     });
   }
-  console.log(data);
+
   return (
     <div>
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
@@ -75,13 +75,19 @@ function LoginComp() {
         <div className="log_inner"></div>
         <div className="log_inner">Email</div>
         <div className="log_inner">
-          <input type="email" name="email" onChange={handleClick}></input>
+          <input
+            type="email"
+            name="email"
+            placeholder="user@user.com"
+            onChange={handleClick}
+          ></input>
         </div>
         <div className="log_inner">Password</div>
         <div className="log_inner">
           <input
-            type="passoword"
+            type="password"
             name="password"
+            placeholder="password123"
             onChange={handleClick}
           ></input>
         </div>

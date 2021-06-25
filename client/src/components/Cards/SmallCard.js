@@ -28,7 +28,7 @@ export default function SmallCard(props) {
   useEffect(() => {
     setdatatesta(props.data);
   }, []);
-  console.log(datatesta);
+
   return (
     <div>
       <Card className={classes.root}>

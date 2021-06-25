@@ -11,18 +11,15 @@ function Register() {
     password: "",
     password2: "",
   });
-  console.log(details);
+
   function onSubmit(e) {
     e.preventDefault();
     axios
       .post("http://localhost:9000/api/log/register", details)
       .then(res => {
-        console.log(res);
         window.location.reload();
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(error => {});
   }
   function handleClick(e) {
     setdetails({
@@ -54,16 +51,18 @@ function Register() {
       <div className="log_inner">
         <div className="log_inner">
           <input
+            type="password"
             placeholder="Enter your password"
             name="password"
             onChange={handleClick}
           ></input>
         </div>
       </div>
-      <div className="log_inner"> Re-enter Password</div>
+      <div className="log_inner">Password</div>
       <div className="log_inner">
         <div className="log_inner">
           <input
+            type="password"
             placeholder="Re-enter your password"
             name="password2"
             onChange={handleClick}

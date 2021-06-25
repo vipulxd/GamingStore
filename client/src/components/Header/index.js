@@ -13,7 +13,7 @@ import {addUser, removeUser} from "../../redux/User/UserAction";
 function Header() {
   const dispatch = useDispatch();
 
-  const [count, setcount] = useState(0);
+  const [count, setcount] = useState(false);
   const history = useHistory();
 
   const noOfGames = useSelector(state => state.CartInfo.products);
@@ -22,7 +22,7 @@ function Header() {
   function handleRedirect() {
     history.push("/auth");
   }
-  console.log(acctype);
+
   function handleLogout() {
     localStorage.removeItem("token");
     dispatch(removeUser());
@@ -30,15 +30,6 @@ function Header() {
     window.location.reload();
   }
 
-  useEffect(() => {
-    setInterval(
-      () =>
-        function () {
-          setcount(count + 1);
-        },
-      1000
-    );
-  }, []);
   return (
     <div className="header_outer">
       <div className="title_heading">
@@ -67,9 +58,6 @@ function Header() {
               style={{color: "white", marginRight: "5px"}}
             />
             <p className="cartnos"> Cart </p>
-            <span className="cartnos">
-              {Logged && noOfGames.length ? noOfGames.length : null}
-            </span>
           </Button>
         </NavLink>
       </div>

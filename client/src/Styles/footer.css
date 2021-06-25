@@ -1,5 +1,4 @@
 .footer_elements_outer {
-  margin-top: 10px;
   text-align: left;
   font-size: 1.4vw;
   text-decoration: none;
@@ -7,6 +6,8 @@
   background-color: black;
 
   display: flex;
+  /* position: absolute; */
+  width: 100%;
   bottom: 0;
   flex-direction: row;
   justify-content: space-between;

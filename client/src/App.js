@@ -29,7 +29,7 @@ function App() {
       dispatch(enable_buy());
       const token = localStorage.token;
       const decode = jwt_decode(token);
-      console.log(decode);
+
       dispatch(addUser(decode));
       if (decode.id === "60d2213b9edf96191531a809") {
         dispatch(userType());

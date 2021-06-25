@@ -39,6 +39,9 @@
   font-weight: 600;
   font-size: 1.2vw;
 }
+.inner_name_inp input::placeholder {
+  color: black;
+}
 .inner_name {
   display: flex;
 
@@ -58,12 +61,25 @@
   display: block;
 }
 .child10 {
-  height: 40px;
-  display: block;
-  border: 1px solid grey;
+  display: flex;
+
+  align-items: center;
 }
 .buybtnnn {
+  /* border: 1px solid grey; */
   color: white;
   font-size: 1.2vw;
   font-weight: bolder;
+}
+.card_element {
+}
+.ElementsApp {
+  font-size: 18px !important;
+}
+.InputContainer .InputElement::placeholder {
+  font-size: 2vw;
+  color: white;
+}
+.InputElement {
+  color: red !important;
 }

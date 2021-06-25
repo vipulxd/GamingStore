@@ -135,7 +135,6 @@ function Product() {
 
   function handleRedirect() {
     if (authenticated) {
-      console.log(price);
       dispatch(sum_add(price));
       history.push("/payment");
     } else {

@@ -58,12 +58,12 @@
   color: white;
 }
 .log_inner input {
-  cursor: none;
-  height: 30%;
+  cursor: input;
+  height: 40%;
   width: 100%;
   outline: 3px ridge black;
   font-weight: 800;
-  background-color: rgba(128, 128, 128, 0.295);
+  background-color: rgba(128, 128, 128, 0.541);
   font-size: 1.2vw;
 }
 .log_inner input::placeholder {
