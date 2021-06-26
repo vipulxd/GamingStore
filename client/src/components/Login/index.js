@@ -70,12 +70,13 @@ function LoginComp() {
         </Alert>
       </Snackbar>
       <div className="log_outer">
-        <div className="log_inner span3"></div>
-        <div className="log_inner"></div>
-        <div className="log_inner"></div>
-        <div className="log_inner">Email</div>
+        <div className="log_inner span3 waste"></div>
+        <div className="log_inner waste"></div>
+        <div className="log_inner waste"></div>
+        <div className="log_inner toppp">Email</div>
         <div className="log_inner">
           <input
+            className="log_input"
             type="email"
             name="email"
             placeholder="user@user.com"
@@ -85,13 +86,14 @@ function LoginComp() {
         <div className="log_inner">Password</div>
         <div className="log_inner">
           <input
+            className="log_input"
             type="password"
             name="password"
             placeholder="password123"
             onChange={handleClick}
           ></input>
         </div>
-        <div className="log_inner"></div>
+        <div className="log_inner waste"></div>
         <div className="log_inner">
           <button style={{height: "20%", cursor: "pointer"}} onClick={onSubmit}>
             {" "}

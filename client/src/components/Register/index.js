@@ -35,10 +35,11 @@ function Register() {
 
   return (
     <div className="log_outer reg">
-      <div className="log_inner span2"></div>
+      <div className="log_inner waste span2"></div>
       <div className="log_inner">Name</div>
       <div className="log_inner">
         <input
+          className="log_input"
           placeholder="Enter Name"
           name="name"
           onChange={handleClick}
@@ -47,32 +48,34 @@ function Register() {
       <div className="log_inner">Email</div>
       <div className="log_inner">
         <input
+          className="log_input"
           placeholder="Enter your email"
           name="email"
           onChange={handleClick}
         ></input>
       </div>
       <div className="log_inner">Password</div>
+
       <div className="log_inner">
-        <div className="log_inner">
-          <input
-            type="password"
-            placeholder="Enter your password"
-            name="password"
-            onChange={handleClick}
-          ></input>
-        </div>
+        <input
+          className="log_input"
+          type="password"
+          placeholder="Enter your password"
+          name="password"
+          onChange={handleClick}
+        ></input>
       </div>
+
       <div className="log_inner">Password</div>
+
       <div className="log_inner">
-        <div className="log_inner">
-          <input
-            type="password"
-            placeholder="Re-enter your password"
-            name="password2"
-            onChange={handleClick}
-          ></input>
-        </div>
+        <input
+          className="log_input"
+          type="password"
+          placeholder="Re-enter your password"
+          name="password2"
+          onChange={handleClick}
+        ></input>
       </div>
       <div className="log_inner"></div>
       <div className="log_inner">

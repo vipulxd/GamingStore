@@ -162,7 +162,7 @@ function Product() {
       {isfetched ? (
         <Reveal effect="fadeInUp">
           <div className="temp1">
-            <div className="baby-temp1">
+            <div className="baby-temp1 bbytmp">
               {
                 <img
                   src={`https://gamerstopbymarcrove.herokuapp.com/${createdata}`}

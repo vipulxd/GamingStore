@@ -4,6 +4,7 @@
   width: 100%;
   grid-template-columns: 50% 50%;
   grid-template-rows: 70px 500px;
+  height: 100%;
 }
 
 .top_left {
@@ -25,6 +26,7 @@
 }
 
 .log_outer {
+  outline: 5px ridge black;
   display: grid;
   color: white;
   grid-template-columns: 30% 50%;
@@ -78,4 +80,78 @@
   width: 30%;
   border-radius: 10px;
   outline: 2px ridge white;
+}
+@media only screen and (max-width: 500px) {
+  .auth_b_outer {
+    margin-top: 28px;
+  }
+  .auth_a_outer {
+    /* display: block; */
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 40px 200px;
+  }
+  .bottom_left {
+    width: 100%;
+    height: 100% !important;
+  }
+  .ab {
+    height: 100%;
+  }
+  .log_outer {
+    outline: 5px ridge black;
+    /* border: 1px solid white; */
+    height: 100% !important;
+    display: block;
+
+    width: 100%;
+    justify-content: space-around;
+    border-radius: 8px;
+  }
+  .log_inner {
+    margin-top: 40px !important;
+    height: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* font-size: 0.6rem; */
+  }
+  .log_inner input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    height: 100%;
+  }
+  .toppp {
+    padding-top: 10px !important;
+  }
+  .log_input {
+    /* padding: 5px !important; */
+    /* border: 0.6px solid white !important; */
+    font-size: 0.8rem !important;
+    height: 20px !important;
+  }
+  .log_inner button {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    height: 30px !important;
+    width: 100% !important;
+  }
+  .waste {
+    display: none;
+  }
+  /* * {
+    border: 1px solid white;
+  } */
+  .reg {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px !important;
+  }
+  .log_inner {
+    padding-top: 8px;
+    margin: 0px !important;
+    margin-right: 20px !important;
+  }
+  .log_input::placeholder {
+    text-align: left !important;
+  }
 }
