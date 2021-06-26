@@ -26,9 +26,6 @@
   display: none; /* Safari and Chrome */
 }
 
-.buy-btn {
-  color: white;
-}
 @media all and (max-width: 500px) {
   .MuiCardMedia-root {
     height: 200px !important;

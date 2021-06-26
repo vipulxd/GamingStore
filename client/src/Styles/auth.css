@@ -87,6 +87,7 @@
   }
   .auth_a_outer {
     /* display: block; */
+    width: 90%;
     grid-template-columns: 50% 50%;
     grid-template-rows: 40px 200px;
   }

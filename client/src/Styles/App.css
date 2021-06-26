@@ -1,7 +1,10 @@
 * {
   margin: 0px;
-  /* border: 1px solid white; */
+
   font-family: Roboto, sans-serif !important;
+}
+button {
+  cursor: pointer;
 }
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;

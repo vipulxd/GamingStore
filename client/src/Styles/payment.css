@@ -83,3 +83,37 @@
 .InputElement {
   color: red !important;
 }
+@media only screen and (max-width: 500px) {
+  .form_body {
+    margin-top: 40px !important;
+  }
+  .form_outer {
+    width: 90%;
+    margin: 10px;
+  }
+  .f_outer {
+    display: block;
+    font-size: 0.8rem;
+  }
+  .f_inner {
+    height: 30px;
+    margin-top: 20px;
+  }
+  .f_inner input {
+    font-size: 0.8rem;
+  }
+  .f_inner input::placeholder {
+    font-size: 0.8rem;
+    text-align: left;
+  }
+  .inp_cart {
+    display: none;
+  }
+  .but_btnn {
+    margin: 0 auto;
+    width: 50%;
+  }
+  .buy_bttnn {
+    font-size: 1rem;
+  }
+}

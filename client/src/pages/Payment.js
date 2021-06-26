@@ -12,7 +12,7 @@ import Alert from "@material-ui/lab/Alert";
 function Payment() {
   const redirect = useHistory();
   const [message, setmessage] = useState();
-  const [open, setOpen] = useState();
+  const [open, setOpen] = useState(false);
   const [error, seterror] = useState(false);
   const [details, setdetails] = useState({
     name: "",
@@ -77,7 +77,6 @@ function Payment() {
           setmessage(response.data.status);
           setOpen(true);
           sendMail();
-          redirect.push("/");
         } else {
           setmessage("Payment Failed");
           seterror(true);
@@ -104,9 +103,11 @@ function Payment() {
       )
       .then(
         response => {
+          redirect.push("/");
           setloading(false);
         },
         err => {
+          redirect.push("/");
           setloading(false);
         }
       );
@@ -181,7 +182,7 @@ function Payment() {
                 ></input>
               </div>
             </div>
-            <div className="f_inner child5">
+            <div className="f_inner child5 inp_cart">
               <div className="inner_name"></div>
               <div className="inner_name_inp"></div>
             </div>
@@ -204,7 +205,7 @@ function Payment() {
                       {loading ? (
                         <SyncLoader size={5} css={overide} color={"yellow"} />
                       ) : (
-                        `Buy`
+                        <p className="buy_bttnn">Buy</p>
                       )}
                     </>
                   </p>

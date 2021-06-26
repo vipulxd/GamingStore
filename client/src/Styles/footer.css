@@ -23,5 +23,8 @@ a {
 }
 @media all and (max-width: 500px) {
   .footer_elements_outer {
+    display: block;
+    width: 100%;
+    font-size: 0.4rem;
   }
 }

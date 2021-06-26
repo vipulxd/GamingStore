@@ -5,21 +5,16 @@ import "../../Styles/header-temp.css";
 import CardMedia from "@material-ui/core/CardMedia";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
 import {useHistory} from "react-router-dom";
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+
 const useStyles = makeStyles(theme => ({
   cover: {
-    width: "300px",
-    height: "50px",
-    borderRadius: 50,
+    width: "250px",
+    height: "100px",
+    borderRadius: 20,
   },
 }));
 
 function Search() {
-  const [open, setOpen] = useState(false);
   const history = useHistory();
   const [prod, setprod] = useState();
   const prods = useSelector(state => state.ProdInfo);
@@ -30,6 +25,44 @@ function Search() {
     setprod(event.target.value.toUpperCase());
     calcresult(event.target.value.toUpperCase());
   }
+  function findRating(r) {
+    switch (r) {
+      case 1:
+        return "⭐️";
+        break;
+      case 2:
+        return "⭐️⭐️";
+        break;
+      case 3:
+        return "⭐️⭐️⭐️";
+        break;
+      case 4:
+        return "⭐️⭐️⭐️⭐️";
+        break;
+      case 5:
+        return "⭐️⭐️⭐️⭐️⭐️";
+        break;
+      case 6:
+        return "⭐️⭐️⭐️";
+        break;
+      case 7:
+        return "⭐️⭐️⭐️⭐️";
+        break;
+      case 8:
+        return "⭐️⭐️⭐️⭐️⭐️⭐️";
+        break;
+      case 9:
+        return "⭐️⭐️⭐️⭐️⭐️";
+        break;
+      case 10:
+        return "⭐️⭐️⭐️⭐️";
+        break;
+
+      default:
+        return "Not Rated";
+    }
+  }
+
   function calcresult(v) {
     const result = prods.item_name.find(obj => {
       return obj.name.split(" ").find(word => word.toUpperCase() === v);
@@ -41,22 +74,9 @@ function Search() {
     }
   }
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
-
   const classes = useStyles();
   return (
     <div className="outer_search">
-      <Snackbar open={open} autoHideDuration={7000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity={user ? "success" : "error"}>
-          Login to continue
-        </Alert>
-      </Snackbar>
       <div className="input_search">
         <input
           className="header_input"
@@ -67,18 +87,12 @@ function Search() {
         {foundprod && (
           <div
             className="result_search"
-            onClick={() =>
-              user ? history.push(`/product/${foundprod._id}`) : setOpen(true)
-            }
+            onClick={() => history.push(`/product/${foundprod._id}`)}
           >
             <div className="child_search">
               <div
                 className="child"
-                onClick={() =>
-                  user
-                    ? history.push(`/product/${foundprod._id}`)
-                    : setOpen(true)
-                }
+                onClick={() => history.push(`/product/${foundprod._id}`)}
               >
                 <CardMedia
                   className={classes.cover}
@@ -94,9 +108,11 @@ function Search() {
                 <div className="child_elements child">
                   {"     " + "₹" + foundprod.price}
                 </div>
+                <div className="child_elements child">
+                  {findRating(foundprod.rating)}
+                </div>
               </div>
             </div>
-            //{" "}
           </div>
         )}
       </div>

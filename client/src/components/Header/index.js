@@ -8,7 +8,7 @@ import {useSelector, useDispatch} from "react-redux";
 import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Shake from "react-reveal/Shake";
-import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
+import FlagIcon from "@material-ui/icons/Flag";
 import {addUser, removeUser} from "../../redux/User/UserAction";
 function Header() {
   const dispatch = useDispatch();
@@ -33,9 +33,9 @@ function Header() {
   return (
     <div className="header_outer">
       <div className="title_heading">
-        <SportsEsportsIcon
+        <FlagIcon
           onClick={() => history.push("/")}
-          style={{fontSize: "100px", color: "whitesmoke"}}
+          style={{fontSize: "100px", color: "yellow"}}
         />
       </div>
       <div className="search_box elementtop">

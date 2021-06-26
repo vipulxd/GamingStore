@@ -4,6 +4,7 @@ import Footer from "../components/Footer/index";
 import CartItem from "../components/Cart";
 import axios from "axios";
 import {useSelector} from "react-redux";
+
 import "../Styles/cart.css";
 function Cart() {
   const logged = useSelector(state => state.UserInfo.authenticated);
@@ -27,8 +28,17 @@ function Cart() {
       {logged ? (
         <CartItem />
       ) : (
-        <div className="_cart_body">
-          <p>plz log in</p>
+        <div
+          style={{
+            height: "450px",
+            display: "flex",
+            justifyContent: "space-around",
+          }}
+          className="_cart_body"
+        >
+          <div>
+            <img src="/static/construct.gif" />
+          </div>
         </div>
       )}
       <Footer />
