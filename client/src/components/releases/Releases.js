@@ -61,6 +61,7 @@ function Releases() {
       })
       .catch(function (error) {});
   }
+  console.log(process.env.REACT_APP_SERVER_LINK);
   function findrating(r) {
     switch (r) {
       case 1:

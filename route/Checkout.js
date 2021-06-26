@@ -2,9 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const {v4: uuidv4} = require("uuid");
-const stripe = require("stripe")(
-  "sk_test_51IyivBSBevftQuaAjwtwRcSq9a1idsqf5UqyHM5uLJVFPNZ1mmijueVMzv746u4J7pEOFGHOkmkn9MTaYhkHm0Bh00tZvSONmc"
-);
+const stripe = require("stripe")("YOUR_STRIPE_APLI_KEYS");
 
 router.post("/checkout", async (req, res) => {
   let status;
